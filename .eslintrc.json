@@ -52,9 +52,10 @@
             }
         ],
         "react/function-component-definition": [
-            2,
+            "error",
             {
-                "namedComponents": "function-declaration"
+                "namedComponents": "arrow-function",
+                "unnamedComponents": "arrow-function"
             }
         ]
     }
