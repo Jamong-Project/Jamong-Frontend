@@ -1,0 +1,9 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+* {
+    font-family: 'Noto Sans KR', 'Kanit', sans-serif;
+}
+body {
+    margin: 0;
+}

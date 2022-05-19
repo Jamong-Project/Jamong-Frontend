@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import Detail from "./routers/Detail";
 import Home from "./routers/Home";
 
-function App() {
+const App = () => {
   return (
     <BrowserRouter>
       <Routes>
@@ -13,6 +13,6 @@ function App() {
       </Routes>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
