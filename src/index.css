@@ -3,7 +3,12 @@
 
 * {
     font-family: 'Noto Sans KR', 'Kanit', sans-serif;
+
+
+    --color-primary: #ffce31;
+    --wave-color: #def0ff;
 }
+
 body {
     margin: 0;
 }
