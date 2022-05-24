@@ -2,10 +2,14 @@ import styled from "@emotion/styled";
 import React from "react";
 import VolunteerCard from "./VolunteerCard";
 import { VolunteerCardItem } from "../models";
+import Pagination from "./Pagination";
 
-const ListContainer = styled.div`
+const VolunteerListContainer = styled.div`
   max-width: 1280px;
   margin: 0 auto;
+`;
+
+const ListContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 15px;
@@ -72,13 +76,16 @@ const VolunteerList = () => {
   ];
 
   return (
-    <ListContainer>
-      {volunteers.map((volunteer) => (
-        <CardBox>
-          <VolunteerCard volunteer={volunteer} />
-        </CardBox>
-      ))}
-    </ListContainer>
+    <VolunteerListContainer>
+      <ListContainer>
+        {volunteers.map((volunteer) => (
+          <CardBox>
+            <VolunteerCard volunteer={volunteer} />
+          </CardBox>
+        ))}
+      </ListContainer>
+      <Pagination url="list" totalPages={10} />
+    </VolunteerListContainer>
   );
 };
 
