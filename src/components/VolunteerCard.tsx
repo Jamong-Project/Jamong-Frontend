@@ -8,42 +8,31 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import { VolunteerCardItem } from "../models";
 
 export type VolunteerCardProps = {
-  volunteerName: string;
-  description: string;
-  image: string;
-  startDate: Date;
-  endDate: Date;
-  maxVolunteers: number;
-  currentVolunteers: number;
+  volunteer: VolunteerCardItem;
 };
 
-const VolunteerCard: React.FC<VolunteerCardProps> = ({
-  volunteerName,
-  description,
-  image,
-  startDate,
-  endDate,
-  maxVolunteers,
-  currentVolunteers,
-}) => {
-  const percentage = (current: number) => (current / maxVolunteers) * 100;
+const VolunteerCard: React.FC<VolunteerCardProps> = ({ volunteer }) => {
+  const percentage = (current: number) =>
+    (current / volunteer.maxVolunteers) * 100;
 
   return (
     <Card sx={{ maxWidth: 345 }} variant="outlined">
       <CardMedia
         component="img"
         height="150"
-        image={image}
-        alt={volunteerName}
+        image={volunteer.image}
+        alt={volunteer.volunteerName}
       />
       <CardContent>
         <Typography component="div">
-          {startDate.toLocaleDateString()} - {endDate.toLocaleDateString()}
+          {volunteer.startDate.toLocaleDateString()} -{" "}
+          {volunteer.endDate.toLocaleDateString()}
         </Typography>
         <Typography gutterBottom variant="h5" component="div">
-          {volunteerName}
+          {volunteer.volunteerName}
         </Typography>
         <Typography
           variant="body2"
@@ -55,15 +44,15 @@ const VolunteerCard: React.FC<VolunteerCardProps> = ({
             WebkitBoxOrient: "vertical",
           }}
         >
-          {description}
+          {volunteer.description}
         </Typography>
       </CardContent>
       <CardActions style={{ display: "flex", justifyContent: "space-between" }}>
         <Typography>
-          {currentVolunteers} / {maxVolunteers}
+          {volunteer.currentVolunteers} / {volunteer.maxVolunteers}
         </Typography>
-        {currentVolunteers >= maxVolunteers ||
-        endDate.getTime() > Date.now() ? (
+        {volunteer.currentVolunteers >= volunteer.maxVolunteers ||
+        volunteer.endDate.getTime() > Date.now() ? (
           <Button variant="contained" disableElevation>
             신청하기
           </Button>
@@ -75,7 +64,7 @@ const VolunteerCard: React.FC<VolunteerCardProps> = ({
       </CardActions>
       <LinearProgress
         variant="determinate"
-        value={percentage(currentVolunteers)}
+        value={percentage(volunteer.currentVolunteers)}
       />
     </Card>
   );
