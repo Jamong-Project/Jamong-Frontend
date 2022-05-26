@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 import { ReactComponent as Wave } from "../../assets/wave.svg";
 
 const HeroContainer = styled.article`
-  height: 80vh;
+  height: 1024px;
   position: relative;
 `;
 
@@ -38,6 +38,7 @@ const HeroBackground = styled.div`
 const WaveContainer = styled.div`
   width: 100%;
   position: absolute;
+  display: flex;
   bottom: 0;
 `;
 
@@ -47,8 +48,13 @@ const Hero = () => {
       <HeroItemContainer>
         <HeroItemDetailContainer>
           <HeroTextContainer>
-            <h1 style={{ fontSize: 45 }}>Volunteer Starts From Here</h1>
-            <Button variant="outlined">Let&apos;s get started</Button>
+            <h1 style={{ fontSize: 45, marginBottom: 0 }}>
+              Volunteer Starts From Here
+            </h1>
+            <h3 style={{ marginTop: 0 }}>간편하게 예약하는 자몽 봉사</h3>
+            <Button variant="outlined" href="/list">
+              Let&apos;s get started
+            </Button>
           </HeroTextContainer>
           <img
             className="rocket"
