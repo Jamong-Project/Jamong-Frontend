@@ -6,7 +6,6 @@ import Home from "./routers/Home";
 import Volunteer from "./routers/Volunteer";
 import "./App.css";
 
-
 const App = () => {
   return (
     <BrowserRouter>
