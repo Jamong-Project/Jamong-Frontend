@@ -4,6 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import Detail from "./routers/Detail";
 import Home from "./routers/Home";
 import Volunteer from "./routers/Volunteer";
+import "./App.css";
+
 
 const App = () => {
   return (

@@ -1,9 +1,14 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap&subset=korean');
 @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
 
 * {
-    font-family: 'Noto Sans KR', 'Kanit', sans-serif;
+    font-family: 'Kanit','Noto Sans KR', sans-serif;
+
+    --color-primary: #ffce31;
+    --wave-color: #def0ff;
 }
+
 body {
     margin: 0;
 }
