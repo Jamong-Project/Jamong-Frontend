@@ -4,7 +4,6 @@ import {
   PaginationItem,
 } from "@mui/material";
 import styled from "@emotion/styled";
-import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 
 const PaginationContainer = styled.div`
@@ -15,14 +14,11 @@ const PaginationContainer = styled.div`
 
 export type PaginationProps = {
   url: string;
+  page: number;
   totalPages: number;
 };
 
-const Pagination = ({ url, totalPages }: PaginationProps) => {
-  const location = useLocation();
-  const query = new URLSearchParams(location.search);
-  const page = parseInt(query.get("page") || "1", 10);
-
+const Pagination = ({ url, page, totalPages }: PaginationProps) => {
   return (
     <PaginationContainer>
       <MaterialPagination

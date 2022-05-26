@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router";
 import VolunteerCard from "./VolunteerCard";
 import { VolunteerCardItem } from "../models";
 import Pagination from "./Pagination";
@@ -75,6 +76,14 @@ const VolunteerList = () => {
     },
   ];
 
+  const location = useLocation();
+  const [page, setPage] = useState<number>(1);
+
+  useEffect(() => {
+    const query = new URLSearchParams(location.search);
+    setPage(parseInt(query.get("page") || "1", 10));
+  }, [location]);
+
   return (
     <VolunteerListContainer>
       <ListContainer>
@@ -84,7 +93,7 @@ const VolunteerList = () => {
           </CardBox>
         ))}
       </ListContainer>
-      <Pagination url="list" totalPages={10} />
+      <Pagination url="list" page={page} totalPages={10} />
     </VolunteerListContainer>
   );
 };
