@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
+import SignInUpButton from "../SignInUpButton";
 
 const HeaderContainer = styled.nav`
   width: 100%;
@@ -39,14 +39,24 @@ const NavigationItem = styled.li`
   padding: 0px 16px;
 `;
 
+type NavigationType = {
+  name: string;
+  link: string;
+};
+
 const Header = () => {
-  const navigationItems: string[] = ["홈", "봉사", "자유게시판"];
-  const navigationLinks: string[] = ["/", "/list", "/board"];
+  const navigationItems: NavigationType[] = [
+    { name: "홈", link: "/" },
+    { name: "봉사", link: "/list" },
+    { name: "자유게시판", link: "/board" },
+  ];
 
-  // Hide background if the page is at the top
-  const [hideBackground, setHideBackground] = useState<boolean>(false);
+  const page = useLocation().pathname;
 
-  const handleScroll = () => setHideBackground(window.scrollY > 0);
+  // Show background if the page is at the top
+  const [showBackground, setShowBackground] = useState<boolean>(false);
+
+  const handleScroll = () => setShowBackground(window.scrollY > 0);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -56,24 +66,27 @@ const Header = () => {
   }, []);
 
   return (
-    <HeaderContainer className={hideBackground ? "header-background" : ""}>
+    <HeaderContainer className={showBackground ? "header-background" : ""}>
       <HeaderWrapper>
         <HeaderItemWrapper>
-          <Logo width={48} height={48} style={{ margin: "0px 16px 0px 0px" }} />
+          <Logo width={42} height={42} style={{ margin: "0px 16px 0px 0px" }} />
           <ul>
-            {navigationItems.map((item, index) => (
-              <NavigationItem key={item}>
+            {navigationItems.map((item) => (
+              <NavigationItem key={item.name}>
                 <Link
-                  to={`${navigationLinks[index]}`}
-                  style={{ textDecoration: "none", color: "black" }}
+                  to={`${item.link}`}
+                  style={{
+                    textDecoration: "none",
+                    color: page === item.link ? "black" : "grey",
+                  }}
                 >
-                  {item}
+                  {item.name}
                 </Link>
               </NavigationItem>
             ))}
           </ul>
         </HeaderItemWrapper>
-        <Button variant="contained">Login</Button>
+        <SignInUpButton />
       </HeaderWrapper>
     </HeaderContainer>
   );
