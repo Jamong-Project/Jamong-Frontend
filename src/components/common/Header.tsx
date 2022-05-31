@@ -34,7 +34,6 @@ const HeaderItemWrapper = styled.div`
 `;
 
 const NavigationItem = styled.li`
-  font-weight: bold;
   display: inline-block;
   padding: 0px 16px;
 `;

@@ -5,7 +5,7 @@ export type LogoSlideProps = {
 };
 
 const LogoSlide = ({ src }: LogoSlideProps) => {
-  return <img alt={src} src={src} width={300} height={200} />;
+  return <img alt={src} src={src} height={100} style={{ margin: "0px 8px" }} />;
 };
 
 export default LogoSlide;
