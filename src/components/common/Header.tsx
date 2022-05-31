@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
-import SignInUpButton from "../SignInUpButton";
+import SignInUpButton from "../sign-in-up-button";
 
 const HeaderContainer = styled.nav`
   width: 100%;

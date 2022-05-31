@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import useAnimationFrame from "../hooks/use-animation-frame";
 import useWindowSize from "../hooks/use-window-size";
-import LogoSlide from "./LogoSlide";
+import LogoSlide from "./logo-slide";
 
 const SliderContainer = styled.div`
   overflow: hidden;

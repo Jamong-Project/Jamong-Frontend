@@ -1,8 +1,8 @@
 import React from "react";
-import Footer from "../components/common/Footer";
-import Header from "../components/common/Header";
-import Hero from "../components/Home/Hero";
-import LogoSlider from "../components/LogoSlider";
+import Footer from "../components/common/footer";
+import Header from "../components/common/header";
+import Hero from "../components/home/hero";
+import LogoSlider from "../components/logo-slider";
 
 const logoUrls: string[] = [
   "https://via.placeholder.com/300x200",
