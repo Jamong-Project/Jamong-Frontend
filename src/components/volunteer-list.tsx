@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
-import VolunteerCard from "./VolunteerCard";
+import VolunteerCard from "./volunteer-card";
 import { VolunteerCardItem } from "../models";
-import Pagination from "./Pagination";
+import Pagination from "./pagination";
 
 const VolunteerListContainer = styled.div`
   max-width: 1280px;

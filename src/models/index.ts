@@ -1,1 +1,1 @@
-export * from "./VolunteerCardItem";
+export * from "./volunteer-card-item";
