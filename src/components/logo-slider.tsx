@@ -27,14 +27,25 @@ const LogoSlider = ({ logos }: LogoSliderProps) => {
 
   const windowSize = useWindowSize();
 
-  const [enabled, setEnabled] = useState(false);
+  const [enabled, setEnabled] = useState<boolean>(false);
 
   useEffect(() => {
+    let cancelled = false;
     const { current: sContent } = refItemArea;
-    if (sContent) {
-      setEnabled(windowSize.width < sContent.clientWidth);
-    }
-  }, [windowSize]);
+    const getWidth = () => {
+      if (!sContent || sContent.clientWidth === logos.length * 16) {
+        if (!cancelled) {
+          requestAnimationFrame(getWidth);
+        }
+      } else {
+        setEnabled(windowSize.width < sContent.clientWidth);
+      }
+    };
+    getWidth();
+    return () => {
+      cancelled = true;
+    };
+  }, [logos.length, windowSize]);
 
   useAnimationFrame(
     enabled,
