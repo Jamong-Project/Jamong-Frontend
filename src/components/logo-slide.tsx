@@ -1,11 +1,20 @@
 import React from "react";
 
+export const LOGO_MARGIN_WIDTH: number = 8;
+
 export type LogoSlideProps = {
   src: string;
 };
 
 const LogoSlide = ({ src }: LogoSlideProps) => {
-  return <img alt={src} src={src} height={100} style={{ margin: "0px 8px" }} />;
+  return (
+    <img
+      alt={src}
+      src={src}
+      height={100}
+      style={{ margin: `0px ${LOGO_MARGIN_WIDTH}px` }}
+    />
+  );
 };
 
 export default LogoSlide;

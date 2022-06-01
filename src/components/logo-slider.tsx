@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import useAnimationFrame from "../hooks/use-animation-frame";
 import useWindowSize from "../hooks/use-window-size";
-import LogoSlide from "./logo-slide";
+import LogoSlide, { LOGO_MARGIN_WIDTH } from "./logo-slide";
 
 const SliderContainer = styled.div`
   overflow: hidden;
@@ -27,14 +27,28 @@ const LogoSlider = ({ logos }: LogoSliderProps) => {
 
   const windowSize = useWindowSize();
 
-  const [enabled, setEnabled] = useState(false);
+  const [enabled, setEnabled] = useState<boolean>(false);
 
   useEffect(() => {
+    let cancelled = false;
     const { current: sContent } = refItemArea;
-    if (sContent) {
-      setEnabled(windowSize.width < sContent.clientWidth);
-    }
-  }, [windowSize]);
+    const getWidth = () => {
+      if (
+        !sContent ||
+        sContent.clientWidth === logos.length * LOGO_MARGIN_WIDTH * 2
+      ) {
+        if (!cancelled) {
+          requestAnimationFrame(getWidth);
+        }
+      } else {
+        setEnabled(windowSize.width < sContent.clientWidth);
+      }
+    };
+    getWidth();
+    return () => {
+      cancelled = true;
+    };
+  }, [logos.length, windowSize]);
 
   useAnimationFrame(
     enabled,
@@ -62,13 +76,13 @@ const LogoSlider = ({ logos }: LogoSliderProps) => {
       >
         <LogoArea ref={refItemArea}>
           {logos.map((src) => (
-            <LogoSlide key={`${src}1`} src={src} />
+            <LogoSlide key={`${src}-main`} src={src} />
           ))}
         </LogoArea>
         {enabled ? (
           <LogoArea style={{ display: "flex" }}>
             {logos.map((src) => (
-              <LogoSlide key={`${src}2`} src={src} />
+              <LogoSlide key={`${src}-append`} src={src} />
             ))}
           </LogoArea>
         ) : null}
