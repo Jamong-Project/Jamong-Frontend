@@ -1,9 +1,8 @@
 export type VolunteerCardItem = {
-  volunteerName: string;
-  description: string;
-  image: string;
-  startDate: Date;
-  endDate: Date;
-  maxVolunteers: number;
+  title: string;
+  picture: string;
+  volunteerDate: Date;
+  applicationDate: Date;
+  maximumPerson: number;
   currentVolunteers: number;
 };

@@ -16,43 +16,31 @@ export type VolunteerCardProps = {
 
 const VolunteerCard: React.FC<VolunteerCardProps> = ({ volunteer }) => {
   const percentage = (current: number) =>
-    (current / volunteer.maxVolunteers) * 100;
+    (current / volunteer.maximumPerson) * 100;
 
   return (
     <Card sx={{ maxWidth: 345 }} variant="outlined">
       <CardMedia
         component="img"
         height="150"
-        image={volunteer.image}
-        alt={volunteer.volunteerName}
+        image={volunteer.picture}
+        alt={volunteer.title}
       />
       <CardContent>
         <Typography component="div">
-          {volunteer.startDate.toLocaleDateString()} -{" "}
-          {volunteer.endDate.toLocaleDateString()}
+          {volunteer.applicationDate.toLocaleDateString()} -{" "}
+          {volunteer.volunteerDate.toLocaleDateString()}
         </Typography>
         <Typography gutterBottom variant="h5" component="div">
-          {volunteer.volunteerName}
-        </Typography>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          sx={{
-            display: "-webkit-box",
-            overflow: "hidden",
-            WebkitLineClamp: 3,
-            WebkitBoxOrient: "vertical",
-          }}
-        >
-          {volunteer.description}
+          {volunteer.title}
         </Typography>
       </CardContent>
       <CardActions style={{ display: "flex", justifyContent: "space-between" }}>
         <Typography>
-          {volunteer.currentVolunteers} / {volunteer.maxVolunteers}
+          {volunteer.currentVolunteers} / {volunteer.maximumPerson}
         </Typography>
-        {volunteer.currentVolunteers >= volunteer.maxVolunteers ||
-        volunteer.endDate.getTime() > Date.now() ? (
+        {volunteer.currentVolunteers >= volunteer.maximumPerson ||
+        volunteer.volunteerDate.getTime() > Date.now() ? (
           <Button variant="contained" disableElevation>
             신청하기
           </Button>
