@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { Button } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Divider = styled.div`
   width: 1px;
@@ -12,7 +13,9 @@ const Divider = styled.div`
 const SignInUpButton = () => {
   return (
     <div style={{ display: "flex", alignItems: "center" }}>
-      <Button variant="text">로그인</Button>
+      <Button variant="text" component={Link} to="/login">
+        로그인
+      </Button>
       <Divider />
       <Button variant="outlined">회원가입</Button>
     </div>
