@@ -8,6 +8,7 @@ import Pagination from "./pagination";
 const VolunteerListContainer = styled.div`
   max-width: 1280px;
   margin: 0 auto;
+  padding: 0 16px;
 `;
 
 const ListContainer = styled.div`
@@ -19,7 +20,8 @@ const ListContainer = styled.div`
 `;
 
 const CardBox = styled.div`
-  margin: 20px auto 0 auto;
+  display: flex;
+  justify-content: center;
 `;
 
 const VolunteerList = () => {

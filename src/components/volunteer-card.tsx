@@ -19,7 +19,7 @@ const VolunteerCard: React.FC<VolunteerCardProps> = ({ volunteer }) => {
     (current / volunteer.maximumPerson) * 100;
 
   return (
-    <Card sx={{ maxWidth: 345 }} variant="outlined">
+    <Card sx={{ width: "100%", maxWidth: 345 }} variant="outlined">
       <CardMedia
         component="img"
         height="150"
