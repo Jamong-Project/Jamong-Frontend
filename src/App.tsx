@@ -6,6 +6,7 @@ import Home from "./routers/home";
 import Volunteer from "./routers/volunteer";
 import "./App.css";
 import Login from "./routers/login";
+import NaverLogin from "./routers/naver-login";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/detail/" element={<Detail />} />
         <Route path="/list/" element={<Volunteer />} />
         <Route path="/login/" element={<Login />} />
+        <Route path="/naver-auth/" element={<NaverLogin />} />
       </Routes>
     </BrowserRouter>
   );
