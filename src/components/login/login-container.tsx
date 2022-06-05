@@ -1,9 +1,11 @@
 import styled from "@emotion/styled";
 import { ArrowBackIos } from "@mui/icons-material";
 import { Paper, IconButton, Modal, Button } from "@mui/material";
-import React, { useCallback } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useCallback, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
+import useNaverLogin from "../../hooks/use-naver-login";
+import NaverLoginButton from "./naver-login-button";
 
 const LOGIN_TEXT = "간편하게 예약하는\n자몽 봉사";
 
@@ -52,6 +54,7 @@ const modalStyle = {
 
 const LoginContainer = () => {
   const navigate = useNavigate();
+  const naverLoginRef = useRef<HTMLDivElement>(null);
   const [openModal, setOpenModal] = React.useState<boolean>(false);
   const handleOpenModal = useCallback(() => {
     setOpenModal(true);
@@ -59,6 +62,13 @@ const LoginContainer = () => {
   const handleCloseModal = useCallback(() => {
     setOpenModal(false);
   }, []);
+
+  const handleNaverLogin = useCallback(() => {
+    if (naverLoginRef.current) {
+      (naverLoginRef.current.children[0] as HTMLButtonElement).click();
+    }
+  }, []);
+  useNaverLogin("green", 5, 48);
 
   return (
     <>
@@ -85,18 +95,16 @@ const LoginContainer = () => {
           <HeaderText style={{ whiteSpace: "pre-line" }}>
             {LOGIN_TEXT}
           </HeaderText>
-          <Link
-            to="/"
-            style={{
-              height: "48px",
-              margin: "16px 0",
-              backgroundColor: "#03C75B",
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <img src="/images/naver-login.png" alt="naver-login" height={48} />
-          </Link>
+          <div
+            ref={naverLoginRef}
+            id="naverIdLogin"
+            style={{ display: "none" }}
+          />
+          <NaverLoginButton
+            width="100%"
+            height="60px"
+            onClick={handleNaverLogin}
+          />
           <RegisterContainer>
             <span style={registerTextStyle}>아직 아이디가 없나요?</span>
             <Button
@@ -120,10 +128,16 @@ const LoginContainer = () => {
       >
         <Paper variant="outlined" sx={modalStyle}>
           <HeaderText>자몽 회원가입</HeaderText>
-          <Link to="/">
-            <img src="/images/naver-login.png" alt="naver-login" height={48} />
-          </Link>
-          <Button variant="outlined" sx={{ height: "48px" }}>
+          <NaverLoginButton
+            width="240px"
+            height="48px"
+            onClick={handleNaverLogin}
+          />
+          <Button
+            variant="outlined"
+            sx={{ height: "48px", marginTop: "8px" }}
+            onClick={handleCloseModal}
+          >
             취소
           </Button>
         </Paper>
