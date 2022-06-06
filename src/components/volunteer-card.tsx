@@ -1,5 +1,4 @@
 import {
-  Button,
   Card,
   CardActions,
   CardContent,
@@ -8,18 +7,43 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 import { VolunteerCardItem } from "../models";
+
+const VOLUNTEER_DATE: string = "봉사 날짜";
+const APPLICATION_DATE: string = "신청 날짜";
+
+const titleStyle = {
+  height: "48px",
+  lineHeight: "24px",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  fontWeight: "bold",
+  marginBottom: "16px",
+};
+
+const dateStyle = {
+  fontSize: "14px",
+};
 
 export type VolunteerCardProps = {
   volunteer: VolunteerCardItem;
 };
-
 const VolunteerCard: React.FC<VolunteerCardProps> = ({ volunteer }) => {
   const percentage = (current: number) =>
     (current / volunteer.maximumPerson) * 100;
 
   return (
-    <Card sx={{ width: "100%", maxWidth: 345 }} variant="outlined">
+    <Card
+      sx={{
+        width: "100%",
+        maxWidth: "345px",
+        textDecoration: "none",
+      }}
+      variant="outlined"
+      component={Link}
+      to={`/list/${volunteer.id}`}
+    >
       <CardMedia
         component="img"
         height="150"
@@ -27,33 +51,40 @@ const VolunteerCard: React.FC<VolunteerCardProps> = ({ volunteer }) => {
         alt={volunteer.title}
       />
       <CardContent>
-        <Typography component="div">
-          {volunteer.applicationDate.toLocaleDateString()} -{" "}
-          {volunteer.volunteerDate.toLocaleDateString()}
-        </Typography>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom component="div" sx={titleStyle}>
           {volunteer.title}
         </Typography>
+        <Typography component="div" sx={dateStyle}>
+          <span style={{ fontWeight: "bold" }}>{VOLUNTEER_DATE}: </span>
+          {volunteer.volunteerDate.toLocaleDateString()}
+        </Typography>
+        <Typography component="div" sx={dateStyle}>
+          <span style={{ fontWeight: "bold" }}>{APPLICATION_DATE}: </span>
+          {volunteer.applicationDate.toLocaleDateString()}
+        </Typography>
       </CardContent>
-      <CardActions style={{ display: "flex", justifyContent: "space-between" }}>
-        <Typography>
+      <CardActions
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          borderTop: "1px solid #e0e0e0",
+        }}
+      >
+        <LinearProgress
+          sx={{ flexGrow: 1 }}
+          variant="determinate"
+          value={percentage(volunteer.currentVolunteers)}
+        />
+        <Typography
+          sx={{
+            marginLeft: "8px",
+            fontSize: "12px",
+            color: "var(--color-primary-text)",
+          }}
+        >
           {volunteer.currentVolunteers} / {volunteer.maximumPerson}
         </Typography>
-        {volunteer.currentVolunteers >= volunteer.maximumPerson ||
-        volunteer.volunteerDate.getTime() > Date.now() ? (
-          <Button variant="contained" disableElevation>
-            신청하기
-          </Button>
-        ) : (
-          <Button variant="contained" disabled>
-            종료
-          </Button>
-        )}
       </CardActions>
-      <LinearProgress
-        variant="determinate"
-        value={percentage(volunteer.currentVolunteers)}
-      />
     </Card>
   );
 };

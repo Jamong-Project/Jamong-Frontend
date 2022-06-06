@@ -27,7 +27,8 @@ const CardBox = styled.div`
 const VolunteerList = () => {
   const volunteers: VolunteerCardItem[] = [
     {
-      title: "Volunteer Name",
+      id: "1",
+      title: "짧은 글",
       picture: "https://via.placeholder.com/150",
       applicationDate: new Date(),
       volunteerDate: new Date(2022, 5, 30, 20, 0),
@@ -35,7 +36,8 @@ const VolunteerList = () => {
       currentVolunteers: 5,
     },
     {
-      title: "Volunteer Name",
+      id: "2",
+      title: "Short English",
       picture: "https://via.placeholder.com/150",
       applicationDate: new Date(),
       volunteerDate: new Date(2022, 5, 30, 20, 0),
@@ -43,7 +45,8 @@ const VolunteerList = () => {
       currentVolunteers: 5,
     },
     {
-      title: "Volunteer Name",
+      id: "3",
+      title: "길고 자세해서 읽기 힘들고 넘쳐날 글입니다.",
       picture: "https://via.placeholder.com/150",
       applicationDate: new Date(),
       volunteerDate: new Date(2022, 5, 30, 20, 0),
@@ -51,7 +54,8 @@ const VolunteerList = () => {
       currentVolunteers: 5,
     },
     {
-      title: "Volunteer Name",
+      id: "4",
+      title: "Title which is too long to show in the card",
       picture: "https://via.placeholder.com/150",
       applicationDate: new Date(),
       volunteerDate: new Date(2022, 5, 30, 20, 0),
@@ -59,7 +63,8 @@ const VolunteerList = () => {
       currentVolunteers: 5,
     },
     {
-      title: "Volunteer Name",
+      id: "5",
+      title: "✨이모티콘이 들어가 있는 제목💖이면서 상상 이상으로 sfddsf",
       picture: "https://via.placeholder.com/150",
       applicationDate: new Date(),
       volunteerDate: new Date(2022, 5, 30, 20, 0),

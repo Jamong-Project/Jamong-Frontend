@@ -7,6 +7,8 @@
 
     --color-primary: #ffce31;
     --wave-color: #def0ff;
+    --color-primary-text: #212121;
+    --color-secondary-text: #8e8e8e;
 }
 
 body {

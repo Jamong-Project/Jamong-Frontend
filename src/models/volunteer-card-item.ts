@@ -1,4 +1,5 @@
 export type VolunteerCardItem = {
+  id: string;
   title: string;
   picture: string;
   volunteerDate: Date;
