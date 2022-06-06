@@ -9,6 +9,7 @@ import {
 import React from "react";
 import { Link } from "react-router-dom";
 import { VolunteerCardItem } from "../models";
+import { timestampToDate } from "../utils";
 
 const VOLUNTEER_DATE: string = "봉사 날짜";
 const APPLICATION_DATE: string = "신청 날짜";
@@ -31,7 +32,7 @@ export type VolunteerCardProps = {
 };
 const VolunteerCard: React.FC<VolunteerCardProps> = ({ volunteer }) => {
   const percentage = (current: number) =>
-    (current / volunteer.maximumPerson) * 100;
+    (current / volunteer.maximumPeople) * 100;
 
   return (
     <Card
@@ -56,11 +57,11 @@ const VolunteerCard: React.FC<VolunteerCardProps> = ({ volunteer }) => {
         </Typography>
         <Typography component="div" sx={dateStyle}>
           <span style={{ fontWeight: "bold" }}>{VOLUNTEER_DATE}: </span>
-          {volunteer.volunteerDate.toLocaleDateString()}
+          {timestampToDate(volunteer.volunteerDate).toLocaleDateString()}
         </Typography>
         <Typography component="div" sx={dateStyle}>
           <span style={{ fontWeight: "bold" }}>{APPLICATION_DATE}: </span>
-          {volunteer.applicationDate.toLocaleDateString()}
+          {timestampToDate(volunteer.applicationDate).toLocaleDateString()}
         </Typography>
       </CardContent>
       <CardActions
@@ -73,7 +74,7 @@ const VolunteerCard: React.FC<VolunteerCardProps> = ({ volunteer }) => {
         <LinearProgress
           sx={{ flexGrow: 1 }}
           variant="determinate"
-          value={percentage(volunteer.currentVolunteers)}
+          value={percentage(volunteer.currentPeople)}
         />
         <Typography
           sx={{
@@ -82,7 +83,7 @@ const VolunteerCard: React.FC<VolunteerCardProps> = ({ volunteer }) => {
             color: "var(--color-primary-text)",
           }}
         >
-          {volunteer.currentVolunteers} / {volunteer.maximumPerson}
+          {volunteer.currentPeople} / {volunteer.maximumPeople}
         </Typography>
       </CardActions>
     </Card>
