@@ -7,14 +7,16 @@ import Volunteer from "./routers/volunteer";
 import "./App.css";
 import Login from "./routers/login";
 import NaverLogin from "./routers/naver-login";
+import VolunteerPost from "./routers/volunteer-post";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/detail/" element={<Detail />} />
-        <Route path="/list/" element={<Volunteer />} />
+        <Route path="/volunteer/" element={<Volunteer />} />
+        <Route path="/volunteer/:id" element={<Detail />} />
+        <Route path="/volunteer/create" element={<VolunteerPost />} />
         <Route path="/login/" element={<Login />} />
         <Route path="/naver-auth/" element={<NaverLogin />} />
       </Routes>

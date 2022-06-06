@@ -57,7 +57,7 @@ const VolunteerList = () => {
           }[filterData(data, loading, error)]
         }
       </ListContainer>
-      <Pagination url="list" page={page} totalPages={10} />
+      <Pagination url="volunteer" page={page} totalPages={10} />
     </VolunteerListContainer>
   );
 };
