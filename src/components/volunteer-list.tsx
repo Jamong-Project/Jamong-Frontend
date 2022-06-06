@@ -4,6 +4,8 @@ import { useLocation } from "react-router";
 import VolunteerCard from "./volunteer-card";
 import { VolunteerCardItem } from "../models";
 import Pagination from "./pagination";
+import useFetchData from "../hooks/use-fetch-data";
+import { filterData, FilterType } from "../utils";
 
 const VolunteerListContainer = styled.div`
   max-width: 1280px;
@@ -25,53 +27,9 @@ const CardBox = styled.div`
 `;
 
 const VolunteerList = () => {
-  const volunteers: VolunteerCardItem[] = [
-    {
-      id: "1",
-      title: "짧은 글",
-      picture: "https://via.placeholder.com/150",
-      applicationDate: new Date(),
-      volunteerDate: new Date(2022, 5, 30, 20, 0),
-      maximumPerson: 10,
-      currentVolunteers: 5,
-    },
-    {
-      id: "2",
-      title: "Short English",
-      picture: "https://via.placeholder.com/150",
-      applicationDate: new Date(),
-      volunteerDate: new Date(2022, 5, 30, 20, 0),
-      maximumPerson: 10,
-      currentVolunteers: 5,
-    },
-    {
-      id: "3",
-      title: "길고 자세해서 읽기 힘들고 넘쳐날 글입니다.",
-      picture: "https://via.placeholder.com/150",
-      applicationDate: new Date(),
-      volunteerDate: new Date(2022, 5, 30, 20, 0),
-      maximumPerson: 10,
-      currentVolunteers: 5,
-    },
-    {
-      id: "4",
-      title: "Title which is too long to show in the card",
-      picture: "https://via.placeholder.com/150",
-      applicationDate: new Date(),
-      volunteerDate: new Date(2022, 5, 30, 20, 0),
-      maximumPerson: 10,
-      currentVolunteers: 5,
-    },
-    {
-      id: "5",
-      title: "✨이모티콘이 들어가 있는 제목💖이면서 상상 이상으로 sfddsf",
-      picture: "https://via.placeholder.com/150",
-      applicationDate: new Date(),
-      volunteerDate: new Date(2022, 5, 30, 20, 0),
-      maximumPerson: 10,
-      currentVolunteers: 5,
-    },
-  ];
+  const [data, loading, error] = useFetchData(
+    `${process.env.REACT_APP_BACKEND_URL}/v1/volunteers`,
+  );
 
   const location = useLocation();
   const [page, setPage] = useState<number>(1);
@@ -84,11 +42,20 @@ const VolunteerList = () => {
   return (
     <VolunteerListContainer>
       <ListContainer>
-        {volunteers.map((volunteer) => (
-          <CardBox>
-            <VolunteerCard volunteer={volunteer} />
-          </CardBox>
-        ))}
+        {
+          {
+            [FilterType.DATA_GET_FAILED]: <div>에러가 발생했습니다.</div>,
+            [FilterType.DATA_GET_LOADING]: null,
+            [FilterType.DATA_GET_SUCCESSFUL]:
+              data &&
+              data.map((volunteer: VolunteerCardItem) => (
+                <CardBox key={volunteer.id}>
+                  <VolunteerCard volunteer={volunteer} />
+                </CardBox>
+              )),
+            [FilterType.DATA_GET_EMPTY]: <div>데이터가 없습니다.</div>,
+          }[filterData(data, loading, error)]
+        }
       </ListContainer>
       <Pagination url="list" page={page} totalPages={10} />
     </VolunteerListContainer>
