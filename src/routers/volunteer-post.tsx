@@ -6,6 +6,7 @@ import HeaderTopSpace from "../components/common/header-top-space";
 import ImageUploader from "../components/image-uploader";
 import MilkdownEditor from "../components/milkdown/milkdown-editor";
 import TitleUploader from "../components/title-uploader";
+import VolunteerToolBar from "../components/volunteer-tool-bar";
 import { VolunteerPostType } from "../models/volunteer-post-type";
 
 const VolunteerPost = () => {
@@ -13,8 +14,8 @@ const VolunteerPost = () => {
   const [requestBody, setRequestBody] = useState<VolunteerPostType>({
     title: "",
     content: "",
-    volunteerDate: 0,
-    applicationDate: 0,
+    volunteerDate: new Date().getTime(),
+    applicationDate: new Date().getTime(),
     maximumPeople: 0,
   });
 
@@ -27,6 +28,7 @@ const VolunteerPost = () => {
       <Header />
       <HeaderTopSpace />
       <TitleUploader callback={requestCallback} />
+      <VolunteerToolBar callback={requestCallback} />
       <MilkdownEditor />
       <ImageUploader formData={formData} />
       <Footer />
