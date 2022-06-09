@@ -1,6 +1,6 @@
 import React from "react";
 import { Editor, rootCtx } from "@milkdown/core";
-import { nord } from "@milkdown/theme-nord";
+import { nordLight } from "@milkdown/theme-nord";
 import { ReactEditor, useEditor } from "@milkdown/react";
 import { commonmark } from "@milkdown/preset-commonmark";
 import { menu } from "@milkdown/plugin-menu";
@@ -23,7 +23,7 @@ const MilkdownEditor: React.FC = () => {
       .config((ctx) => {
         ctx.set(rootCtx, root);
       })
-      .use(nord)
+      .use(nordLight)
       .use(menu)
       .use(commonmark),
   );
