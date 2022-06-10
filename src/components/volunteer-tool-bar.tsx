@@ -5,6 +5,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import styled from "@emotion/styled";
 import { useInput } from "../hooks/use-input";
+import { timestampToUnixTimestamp } from "../utils";
 
 const VOLUNTEER_TIME_PICKER_LABEL: string = "봉사 시간 설정";
 const APPLICATION_TIME_PICKER_LABEL: string = "신청 시작 날짜 설정";
@@ -51,7 +52,7 @@ const VolunteerToolBar = ({ callback }: VolunteerToolBarProps) => {
         return;
     }
 
-    callback(key, newDate?.getTime() ?? 0);
+    callback(key, timestampToUnixTimestamp(newDate?.getTime() ?? 0));
   };
 
   return (
