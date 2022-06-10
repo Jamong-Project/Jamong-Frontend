@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Icon, IconButton } from "@mui/material";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 const ImageUploaderContainer = styled.div`
   width: 100%;
@@ -28,15 +28,23 @@ export type ImageUploaderProps = {
   formData?: FormData;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ImageUploader = ({ formData }: ImageUploaderProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [images, setImages] = React.useState<File[]>([]);
 
-  const onImageLoad = async (event: any) => {
+  const onImageLoad = (event: any) => {
     const file = event.target.files;
     setImages((prev) => [...prev, ...file]);
   };
+
+  useEffect(() => {
+    if (images && images.length > 0) {
+      formData!.set("file", images[0]);
+    } else {
+      formData!.delete("file");
+      inputRef.current!.value = "";
+    }
+  }, [images]);
 
   return (
     <ImageUploaderContainer>
