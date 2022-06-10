@@ -4,6 +4,7 @@ import { nordLight } from "@milkdown/theme-nord";
 import { ReactEditor, useEditor } from "@milkdown/react";
 import { commonmark } from "@milkdown/preset-commonmark";
 import { menu } from "@milkdown/plugin-menu";
+import { listener, listenerCtx } from "@milkdown/plugin-listener";
 import styled from "@emotion/styled";
 
 const MilkdownContainer = styled.div`
@@ -17,13 +18,25 @@ const MilkdownEditorContainer = styled.div`
   max-width: 1280px;
 `;
 
-const MilkdownEditor: React.FC = () => {
+export type MilkdownEditorProps = {
+  callback?: (key: string, value: any) => void;
+};
+
+const MilkdownEditor = ({ callback }: MilkdownEditorProps) => {
   const editor = useEditor((root) =>
     Editor.make()
       .config((ctx) => {
         ctx.set(rootCtx, root);
       })
+      .config((ctx) => {
+        ctx.get(listenerCtx).markdownUpdated((_, markdown) => {
+          if (callback) {
+            callback("content", markdown);
+          }
+        });
+      })
       .use(nordLight)
+      .use(listener)
       .use(menu)
       .use(commonmark),
   );
@@ -35,6 +48,10 @@ const MilkdownEditor: React.FC = () => {
       </MilkdownEditorContainer>
     </MilkdownContainer>
   );
+};
+
+MilkdownEditor.defaultProps = {
+  callback: null,
 };
 
 export default MilkdownEditor;
