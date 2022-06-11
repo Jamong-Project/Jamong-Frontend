@@ -13,10 +13,10 @@ import { timestampToUnixTimestamp } from "../utils";
 
 const BodyContainer = styled.div`
   > * {
-    margin-bottom: 16px;
+    margin: 16px 0;
   }
 
-  margin: 0 auto;
+  margin: 16px auto;
   max-width: 1280px;
   width: 100%;
 `;
