@@ -14,11 +14,8 @@ const ZERO_PEOPLE_ERROR_LABEL: string = "0명은 선택할 수 없습니다.";
 const EMPTY_PEOPLE_ERROR_LABEL: string = "인원을 선택해주세요.";
 
 const VolunteerToolBarContainer = styled.div`
-  width: 100%;
-  max-width: 1280px;
-  margin: 16px auto;
-  justify-content: space-between;
   display: flex;
+  justify-content: space-between;
 `;
 
 const DateTimeContainer = styled.div`

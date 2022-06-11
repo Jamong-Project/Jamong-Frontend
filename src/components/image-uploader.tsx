@@ -3,11 +3,8 @@ import { Icon, IconButton } from "@mui/material";
 import React, { useEffect, useRef } from "react";
 
 const ImageUploaderContainer = styled.div`
-  width: 100%;
-  max-width: 1280px;
   display: flex;
   overflow-y: auto;
-  margin: 0 auto;
 `;
 
 const ImageUploaderButton = styled.div`

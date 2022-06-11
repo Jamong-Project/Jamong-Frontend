@@ -1,19 +1,12 @@
 import React, { useState } from "react";
 import { LoadingButton } from "@mui/lab";
 import { useNavigate } from "react-router";
-import styled from "@emotion/styled";
 
 const FAILED_TO_POST_MESSAGE: string = "업로드 실패";
 const POST_MESSAGE: string = "업로드";
 const POSTING_MESSAGE: string = "업로드 중...";
 const GO_BACK_MESSAGE: string = "업로드 완료하기";
 
-const LoadingButtonContainer = styled.div`
-  display: flex;
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-`;
 export type PostButtonProps = {
   formData?: FormData;
   requestBody: any;
@@ -49,25 +42,23 @@ const PostButton = ({ formData, requestBody, style }: PostButtonProps) => {
   };
 
   return (
-    <LoadingButtonContainer>
-      <LoadingButton
-        onClick={condition === "done" ? () => navigate(-1) : onClick}
-        variant="contained"
-        sx={{ ...style, height: "48px" }}
-        fullWidth
-        loading={condition === "loading"}
-        disableRipple
-      >
+    <LoadingButton
+      onClick={condition === "done" ? () => navigate(-1) : onClick}
+      variant="contained"
+      sx={{ ...style, height: "48px" }}
+      fullWidth
+      loading={condition === "loading"}
+      disableRipple
+    >
+      {
         {
-          {
-            none: POST_MESSAGE,
-            error: FAILED_TO_POST_MESSAGE,
-            done: GO_BACK_MESSAGE,
-            loading: POSTING_MESSAGE,
-          }[condition]
-        }
-      </LoadingButton>
-    </LoadingButtonContainer>
+          none: POST_MESSAGE,
+          error: FAILED_TO_POST_MESSAGE,
+          done: GO_BACK_MESSAGE,
+          loading: POSTING_MESSAGE,
+        }[condition]
+      }
+    </LoadingButton>
   );
 };
 

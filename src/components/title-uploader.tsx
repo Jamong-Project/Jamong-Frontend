@@ -20,24 +20,16 @@ const TitleUploader = ({ callback }: TitleUploaderProps) => {
   });
 
   return (
-    <div
-      style={{
-        width: "100%",
-        maxWidth: "1280px",
-        margin: "0 auto",
-      }}
-    >
-      <TextField
-        id="standard-basic"
-        margin="normal"
-        fullWidth
-        value={value.value}
-        onChange={value.onChange}
-        label={TITLE_LABEL}
-        error={titleState === "empty"}
-        helperText={titleState === "empty" && WRONG_TITLE_HELPER_LABEL}
-      />
-    </div>
+    <TextField
+      id="standard-basic"
+      margin="normal"
+      fullWidth
+      value={value.value}
+      onChange={value.onChange}
+      label={TITLE_LABEL}
+      error={titleState === "empty"}
+      helperText={titleState === "empty" && WRONG_TITLE_HELPER_LABEL}
+    />
   );
 };
 

@@ -1,3 +1,4 @@
+import styled from "@emotion/styled";
 import React, { useCallback, useState } from "react";
 import Footer from "../components/common/footer";
 import Header from "../components/common/header";
@@ -9,6 +10,16 @@ import TitleUploader from "../components/title-uploader";
 import VolunteerToolBar from "../components/volunteer-tool-bar";
 import { VolunteerPostType } from "../models/volunteer-post-type";
 import { timestampToUnixTimestamp } from "../utils";
+
+const BodyContainer = styled.div`
+  > * {
+    margin-bottom: 16px;
+  }
+
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 100%;
+`;
 
 const formData = new FormData();
 
@@ -32,11 +43,13 @@ const VolunteerPost = () => {
     <>
       <Header />
       <HeaderTopSpace />
-      <TitleUploader callback={requestCallback} />
-      <VolunteerToolBar callback={requestCallback} />
-      <MilkdownEditor callback={requestCallback} />
-      <ImageUploader formData={formData} />
-      <PostButton formData={formData} requestBody={requestBody} />
+      <BodyContainer>
+        <TitleUploader callback={requestCallback} />
+        <VolunteerToolBar callback={requestCallback} />
+        <MilkdownEditor callback={requestCallback} />
+        <ImageUploader formData={formData} />
+        <PostButton formData={formData} requestBody={requestBody} />
+      </BodyContainer>
       <Footer />
     </>
   );
