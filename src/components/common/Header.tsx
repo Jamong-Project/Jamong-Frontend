@@ -46,7 +46,7 @@ type NavigationType = {
 const Header = () => {
   const navigationItems: NavigationType[] = [
     { name: "홈", link: "/" },
-    { name: "봉사", link: "/list" },
+    { name: "봉사", link: "/volunteer" },
     { name: "자유게시판", link: "/board" },
   ];
 

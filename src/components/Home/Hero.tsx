@@ -52,7 +52,7 @@ const Hero = () => {
               Volunteer Starts From Here
             </h1>
             <h3 style={{ marginTop: 0 }}>간편하게 예약하는 자몽 봉사</h3>
-            <Button variant="outlined" href="/list">
+            <Button variant="outlined" href="/volunteer">
               Let&apos;s get started
             </Button>
           </HeroTextContainer>
