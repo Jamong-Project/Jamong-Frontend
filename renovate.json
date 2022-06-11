@@ -1,5 +1,22 @@
 {
-  "extends": [
-    "config:base"
-  ]
+  "extends": [":timezone(Asia/Seoul)", ":label(renovate)", "config:base"],
+  "npm": {
+    "separateMinorPatch": true,
+    "packageRules": [
+      { // 타입패키지들에 관해서는 major업데이트가 아닌 이상 자동merge되게
+        "packagePatterns": ["^@types/"],
+        "automerge": true,
+        "major": {
+          "automerge": false
+        }
+      },
+      { // lint관련들을 EPS로 한덩이로 PR이 날라오겠끔 설정
+        "groupName": "EPS",
+        "packageNames": ["eslint", "prettier", "stylelint"],
+        "packagePatterns": ["^eslint-", "^prettier-", "stylelint-"]
+      }
+    ]
+  },
+  "enabledManagers": ["npm"],
+  "ignorePaths": []
 }
