@@ -1,6 +1,7 @@
 {
-  "extends": [":timezone(Asia/Seoul)", ":label(renovate)", "config:base"],
+  "extends": [":timezone(Asia/Seoul)", "config:base", "schedule:earlyMondays"],
   "npm": {
+    "labels": ["Renovate", "CI/CD", "Bot", "Chore"],
     "separateMinorPatch": true,
     "packageRules": [{
         "packagePatterns": ["^@types/"],
