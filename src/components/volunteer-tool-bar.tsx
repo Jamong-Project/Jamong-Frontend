@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { TextField } from "@mui/material";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -10,6 +10,8 @@ import { timestampToUnixTimestamp } from "../utils";
 const VOLUNTEER_TIME_PICKER_LABEL: string = "봉사 시간 설정";
 const APPLICATION_TIME_PICKER_LABEL: string = "신청 시작 날짜 설정";
 const MAXIMUM_PEOPLE_LABEL: string = "최대 인원 설정";
+const ZERO_PEOPLE_ERROR_LABEL: string = "0명은 선택할 수 없습니다.";
+const EMPTY_PEOPLE_ERROR_LABEL: string = "인원을 선택해주세요.";
 
 const VolunteerToolBarContainer = styled.div`
   width: 100%;
@@ -36,8 +38,24 @@ const VolunteerToolBar = ({ callback }: VolunteerToolBarProps) => {
     new Date(),
   );
 
+  const [countState, setCountState] = useState<
+    "init" | "empty" | "filled" | "zero"
+  >("init");
+
   const peopleValue = useInput(0, (v) => {
     callback("maximumPeople", v);
+
+    if (v <= 0) {
+      setCountState("zero");
+      return;
+    }
+
+    if (v === "" || v === null || v === undefined) {
+      setCountState("empty");
+      return;
+    }
+
+    setCountState("filled");
   });
 
   const onChange = (newDate: Date | null, key: string) => {
@@ -89,6 +107,17 @@ const VolunteerToolBar = ({ callback }: VolunteerToolBarProps) => {
         value={peopleValue.value}
         onChange={peopleValue.onChange}
         label={MAXIMUM_PEOPLE_LABEL}
+        inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
+        type="number"
+        error={countState === "empty" || countState === "zero"}
+        helperText={
+          {
+            empty: EMPTY_PEOPLE_ERROR_LABEL,
+            zero: ZERO_PEOPLE_ERROR_LABEL,
+            init: "",
+            filled: "",
+          }[countState]
+        }
       />
     </VolunteerToolBarContainer>
   );
