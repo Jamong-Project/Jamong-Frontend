@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import Client from "../utils/client";
 
-const useFetchData = (url: string, config?: object) => {
+const useFetchData = (path: string, config?: object) => {
   const [data, setData] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>();
@@ -9,8 +9,7 @@ const useFetchData = (url: string, config?: object) => {
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get(url, config)
+    Client.get(path, config)
       .then((response) => {
         setData(response.data);
         setHeader(response.headers);
@@ -20,7 +19,7 @@ const useFetchData = (url: string, config?: object) => {
         setError(e);
         setLoading(false);
       });
-  }, [url, config]);
+  }, [path, config]);
 
   return [data, loading, error, header];
 };

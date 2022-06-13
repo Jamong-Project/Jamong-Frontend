@@ -35,9 +35,7 @@ const HomeVolunteerList = () => {
   }, []);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [data, loading, error] = useFetchData(
-    `${process.env.REACT_APP_BACKEND_URL}/v1/volunteers`,
-  );
+  const [data, loading, error] = useFetchData("/v1/volunteers");
 
   return (
     <>

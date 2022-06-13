@@ -27,9 +27,7 @@ const CardBox = styled.div`
 `;
 
 const VolunteerList = () => {
-  const [data, loading, error] = useFetchData(
-    `${process.env.REACT_APP_BACKEND_URL}/v1/volunteers`,
-  );
+  const [data, loading, error] = useFetchData("/v1/volunteers");
 
   const location = useLocation();
   const [page, setPage] = useState<number>(1);
