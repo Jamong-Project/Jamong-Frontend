@@ -30,7 +30,7 @@ const SmallVolunteerCard = ({ cardItem }: SmallVolunteerCardProps) => {
         <CardMedia
           component="img"
           height="200"
-          image={cardItem.picture}
+          image={cardItem.picture?.url}
           alt="volunteer"
           sx={{ filter: "brightness(0.7)" }}
         />

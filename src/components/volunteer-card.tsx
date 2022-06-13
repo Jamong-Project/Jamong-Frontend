@@ -48,7 +48,7 @@ const VolunteerCard: React.FC<VolunteerCardProps> = ({ volunteer }) => {
       <CardMedia
         component="img"
         height="150"
-        image={volunteer.picture}
+        image={volunteer.picture?.url}
         alt={volunteer.title}
       />
       <CardContent>
