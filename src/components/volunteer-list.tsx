@@ -7,6 +7,8 @@ import Pagination from "./pagination";
 import useFetchData from "../hooks/use-fetch-data";
 import { filterData, FilterType } from "../utils";
 
+const DATA_PER_PAGE: number = 12;
+
 const VolunteerListContainer = styled.div`
   max-width: 1280px;
   margin: 0 auto;
@@ -27,10 +29,21 @@ const CardBox = styled.div`
 `;
 
 const VolunteerList = () => {
-  const [data, loading, error] = useFetchData("/v1/volunteers");
-
-  const location = useLocation();
+  const [totalPages, setTotalPages] = useState<number>(1);
   const [page, setPage] = useState<number>(1);
+  const location = useLocation();
+
+  const [data, loading, error, header] = useFetchData(
+    `v1/volunteers?from=${(page - 1) * DATA_PER_PAGE}&to=${
+      page * DATA_PER_PAGE
+    }`,
+  );
+
+  useEffect(() => {
+    if (header !== undefined) {
+      setTotalPages(Math.ceil(header["total-page"] / DATA_PER_PAGE));
+    }
+  }, [header]);
 
   useEffect(() => {
     const query = new URLSearchParams(location.search);
@@ -55,7 +68,7 @@ const VolunteerList = () => {
           }[filterData(data, loading, error)]
         }
       </ListContainer>
-      <Pagination url="list" page={page} totalPages={10} />
+      <Pagination url="list" page={page ?? 0} totalPages={totalPages} />
     </VolunteerListContainer>
   );
 };
