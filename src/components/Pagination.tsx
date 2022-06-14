@@ -4,7 +4,8 @@ import {
   PaginationItem,
 } from "@mui/material";
 import styled from "@emotion/styled";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { hasQuery } from "../utils";
 
 const PaginationContainer = styled.div`
   display: flex;
@@ -13,12 +14,13 @@ const PaginationContainer = styled.div`
 `;
 
 export type PaginationProps = {
-  url: string;
   page: number;
   totalPages: number;
 };
 
-const Pagination = ({ url, page, totalPages }: PaginationProps) => {
+const Pagination = ({ page, totalPages }: PaginationProps) => {
+  const location = useLocation();
+
   return (
     <PaginationContainer>
       <MaterialPagination
@@ -27,7 +29,14 @@ const Pagination = ({ url, page, totalPages }: PaginationProps) => {
         renderItem={(item) => (
           <PaginationItem
             component={Link}
-            to={`/${url}${item.page === 1 ? "" : `?page=${item.page}`}`}
+            to={
+              hasQuery(location.search)
+                ? `${location.pathname}${location.search.replace(
+                    /&page=\d+/,
+                    "",
+                  )}&page=${item.page}`
+                : `${location.pathname}?page=${item.page}`
+            }
             {...item}
           />
         )}

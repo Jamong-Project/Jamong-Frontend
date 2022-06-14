@@ -2,12 +2,21 @@ import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import VolunteerCard from "./volunteer-card";
-import { VolunteerCardItem } from "../models";
+import { OrderingType, VolunteerCardItem } from "../models";
 import Pagination from "./pagination";
 import useFetchData from "../hooks/use-fetch-data";
 import { filterData, FilterType } from "../utils";
+import OrderingButtonGroup from "./ordering-button-group";
 
 const DATA_PER_PAGE: number = 12;
+
+const orderingOption: { [key in OrderingType]: string } = {
+  new: "-id",
+  popular: "currentPeople",
+  title: "title",
+  application: "applicationDate",
+  volunteer: "volunteerDate",
+};
 
 const VolunteerListContainer = styled.div`
   max-width: 1280px;
@@ -31,12 +40,13 @@ const CardBox = styled.div`
 const VolunteerList = () => {
   const [totalPages, setTotalPages] = useState<number>(1);
   const [page, setPage] = useState<number>(0);
+  const [ordering, setOrdering] = useState<OrderingType>("new");
   const location = useLocation();
 
   const [data, loading, error, header] = useFetchData(
     `v1/volunteers?from=${(page - 1) * DATA_PER_PAGE}&to=${
       page * DATA_PER_PAGE
-    }`,
+    }&ordering=${orderingOption[ordering]}`,
     page > 0,
   );
 
@@ -49,10 +59,12 @@ const VolunteerList = () => {
   useEffect(() => {
     const query = new URLSearchParams(location.search);
     setPage(parseInt(query.get("page") || "1", 10));
+    setOrdering((query.get("ordering") as OrderingType) || "new");
   }, [location]);
 
   return (
     <VolunteerListContainer>
+      <OrderingButtonGroup path="list" current={ordering} />
       <ListContainer>
         {
           {
@@ -69,7 +81,7 @@ const VolunteerList = () => {
           }[filterData(data, loading, error)]
         }
       </ListContainer>
-      <Pagination url="list" page={page ?? 0} totalPages={totalPages} />
+      <Pagination page={page ?? 0} totalPages={totalPages} />
     </VolunteerListContainer>
   );
 };
