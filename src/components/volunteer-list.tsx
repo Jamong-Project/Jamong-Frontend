@@ -30,13 +30,14 @@ const CardBox = styled.div`
 
 const VolunteerList = () => {
   const [totalPages, setTotalPages] = useState<number>(1);
-  const [page, setPage] = useState<number>(1);
+  const [page, setPage] = useState<number>(0);
   const location = useLocation();
 
   const [data, loading, error, header] = useFetchData(
     `v1/volunteers?from=${(page - 1) * DATA_PER_PAGE}&to=${
       page * DATA_PER_PAGE
     }`,
+    page > 0,
   );
 
   useEffect(() => {

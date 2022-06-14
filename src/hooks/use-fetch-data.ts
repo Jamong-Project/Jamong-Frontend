@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
 import Client from "../utils/client";
 
-const useFetchData = (path: string, config?: object) => {
+const useFetchData = (
+  path: string,
+  launch: boolean = true,
+  config?: object,
+) => {
   const [data, setData] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>();
   const [header, setHeader] = useState<any>();
 
   useEffect(() => {
+    if (!launch) return;
+
     setLoading(true);
     Client.get(path, config)
       .then((response) => {
@@ -19,7 +25,7 @@ const useFetchData = (path: string, config?: object) => {
         setError(e);
         setLoading(false);
       });
-  }, [path, config]);
+  }, [path, config, launch]);
 
   return [data, loading, error, header];
 };
