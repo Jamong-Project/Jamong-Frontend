@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import VolunteerCard from "./volunteer-card";
-import { OrderingType, VolunteerCardItem } from "../models";
+import { OrderingType, VolunteerGetType } from "../@types";
 import Pagination from "./pagination";
 import useFetchData from "../hooks/use-fetch-data";
 import { filterData, FilterType } from "../utils";
@@ -43,7 +43,7 @@ const VolunteerList = () => {
   const [ordering, setOrdering] = useState<OrderingType>("new");
   const location = useLocation();
 
-  const [data, loading, error, header] = useFetchData<VolunteerCardItem[]>(
+  const [data, loading, error, header] = useFetchData<VolunteerGetType[]>(
     `v1/volunteers?from=${(page - 1) * DATA_PER_PAGE}&to=${
       page * DATA_PER_PAGE
     }&ordering=${orderingOption[ordering]}`,
@@ -72,7 +72,7 @@ const VolunteerList = () => {
             [FilterType.DATA_GET_LOADING]: null,
             [FilterType.DATA_GET_SUCCESSFUL]:
               data &&
-              data.map((volunteer: VolunteerCardItem) => (
+              data.map((volunteer: VolunteerGetType) => (
                 <CardBox key={volunteer.id}>
                   <VolunteerCard volunteer={volunteer} />
                 </CardBox>

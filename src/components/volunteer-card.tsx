@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
-import { VolunteerCardItem } from "../models";
+import { VolunteerGetType } from "../@types";
 import { timestampToDate } from "../utils";
 
 const VOLUNTEER_DATE: string = "봉사 날짜";
@@ -28,7 +28,7 @@ const dateStyle = {
 };
 
 export type VolunteerCardProps = {
-  volunteer: VolunteerCardItem;
+  volunteer: VolunteerGetType;
 };
 const VolunteerCard: React.FC<VolunteerCardProps> = ({ volunteer }) => {
   const percentage = (current: number) =>

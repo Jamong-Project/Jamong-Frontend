@@ -6,7 +6,7 @@ import "aos/dist/aos.css";
 import SmallVolunteerCard from "../small-volunteer-card";
 import useFetchData from "../../hooks/use-fetch-data";
 import GradientDivider from "../gradient-divider";
-import { VolunteerCardItem } from "../../models";
+import { VolunteerGetType } from "../../@types";
 
 const HomeVolunteerListContainer = styled.div`
   height: 400px;
@@ -37,7 +37,7 @@ const HomeVolunteerList = () => {
   }, []);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [data, loading, error] = useFetchData<VolunteerCardItem[]>(
+  const [data, loading, error] = useFetchData<VolunteerGetType[]>(
     "/v1/volunteers?from=0&to=3&ordering=-id",
   );
 
@@ -50,7 +50,7 @@ const HomeVolunteerList = () => {
             {error && <h2>최근 봉사활동이 존재하지 않아요 🥲</h2>}
             {data === undefined || loading
               ? null
-              : data.map((value: VolunteerCardItem) => {
+              : data.map((value: VolunteerGetType) => {
                   return <SmallVolunteerCard key={value.id} cardItem={value} />;
                 })}
           </VolunteerCardContainer>

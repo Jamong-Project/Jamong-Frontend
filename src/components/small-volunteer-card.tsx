@@ -2,7 +2,7 @@
 import styled from "@emotion/styled";
 import { Card, CardMedia } from "@mui/material";
 import React from "react";
-import { VolunteerCardItem } from "../models";
+import { VolunteerGetType } from "../@types";
 
 const CardContainer = styled.div`
   position: relative;
@@ -17,7 +17,7 @@ const CardContent = styled.div`
 `;
 
 export type SmallVolunteerCardProps = {
-  cardItem: VolunteerCardItem;
+  cardItem: VolunteerGetType;
 };
 
 const SmallVolunteerCard = ({ cardItem }: SmallVolunteerCardProps) => {

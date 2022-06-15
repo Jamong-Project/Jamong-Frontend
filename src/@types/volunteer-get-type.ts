@@ -1,4 +1,4 @@
-export type VolunteerCardItem = {
+export type VolunteerGetType = {
   id: string;
   title: string;
   picture: {

@@ -2,7 +2,7 @@ import { Button, ButtonGroup } from "@mui/material";
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import React from "react";
-import { OrderingType } from "../models";
+import { OrderingType } from "../@types";
 
 const OrderingButtonGroupContainer = styled.div`
   display: flex;

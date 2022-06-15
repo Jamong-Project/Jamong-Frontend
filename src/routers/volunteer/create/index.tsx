@@ -7,7 +7,7 @@ import MilkdownEditor from "../../../components/milkdown/milkdown-editor";
 import PostButton from "../../../components/post-button";
 import TitleUploader from "../../../components/title-uploader";
 import VolunteerToolBar from "../../../components/volunteer-tool-bar";
-import { VolunteerPostType } from "../../../models/volunteer-post-type";
+import { VolunteerPostType } from "../../../@types/volunteer-post-type";
 import { timestampToUnixTimestamp } from "../../../utils";
 import { BodyContainer } from "./styles";
 
