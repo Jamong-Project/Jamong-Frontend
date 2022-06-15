@@ -8,7 +8,7 @@
     "@milkdown/core": "6.1.4",
     "@milkdown/plugin-listener": "6.1.5",
     "@milkdown/plugin-menu": "6.1.4",
-    "@milkdown/preset-commonmark": "6.1.4",
+    "@milkdown/preset-commonmark": "6.1.5",
     "@milkdown/prose": "6.1.4",
     "@milkdown/react": "6.1.4",
     "@milkdown/theme-nord": "6.1.4",
