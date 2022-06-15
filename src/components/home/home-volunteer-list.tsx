@@ -37,7 +37,8 @@ const HomeVolunteerList = () => {
   }, []);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [data, loading, error] = useFetchData("/v1/volunteers");
+  const [data, loading, error] =
+    useFetchData<VolunteerCardItem[]>("/v1/volunteers");
 
   return (
     <>

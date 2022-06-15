@@ -43,7 +43,7 @@ const VolunteerList = () => {
   const [ordering, setOrdering] = useState<OrderingType>("new");
   const location = useLocation();
 
-  const [data, loading, error, header] = useFetchData(
+  const [data, loading, error, header] = useFetchData<VolunteerCardItem[]>(
     `v1/volunteers?from=${(page - 1) * DATA_PER_PAGE}&to=${
       page * DATA_PER_PAGE
     }&ordering=${orderingOption[ordering]}`,

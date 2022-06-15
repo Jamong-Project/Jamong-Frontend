@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import Client from "../utils/client";
 
-const useFetchData = (
+const useFetchData = <T>(
   path: string,
   launch: boolean = true,
   config?: object,
-) => {
-  const [data, setData] = useState<any>();
+): [T | undefined, boolean, any, any] => {
+  const [data, setData] = useState<T>();
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>();
   const [header, setHeader] = useState<any>();
