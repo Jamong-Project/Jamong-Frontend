@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router";
 
-const NaverLogin = () => {
+const NaverAuth = () => {
   const location = useLocation();
 
   return (
@@ -24,4 +24,4 @@ const NaverLogin = () => {
   );
 };
 
-export default NaverLogin;
+export default NaverAuth;
