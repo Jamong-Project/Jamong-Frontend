@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import useAnimationFrame from "../hooks/use-animation-frame";
 import useWindowSize from "../hooks/use-window-size";
-import LogoSlide, { LOGO_MARGIN_WIDTH } from "./logo-slide";
+import LogoSlide from "./logo-slide";
 
 const SliderContainer = styled.div`
   overflow: hidden;
@@ -33,10 +33,7 @@ const LogoSlider = ({ logos }: LogoSliderProps) => {
     let cancelled = false;
     const { current: sContent } = refItemArea;
     const getWidth = () => {
-      if (
-        !sContent ||
-        sContent.clientWidth === logos.length * LOGO_MARGIN_WIDTH * 2
-      ) {
+      if (!sContent) {
         if (!cancelled) {
           requestAnimationFrame(getWidth);
         }

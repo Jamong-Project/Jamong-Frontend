@@ -64,7 +64,7 @@ const VolunteerList = () => {
 
   return (
     <VolunteerListContainer>
-      <OrderingButtonGroup path="list" current={ordering} />
+      <OrderingButtonGroup path="volunteer" current={ordering} />
       <ListContainer>
         {
           {

@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, { useEffect } from "react";
 import styled from "@emotion/styled";
 import AOS from "aos";
@@ -8,6 +9,7 @@ import GradientDivider from "../gradient-divider";
 import { VolunteerCardItem } from "../../models";
 
 const HomeVolunteerListContainer = styled.div`
+  height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,13 +45,16 @@ const HomeVolunteerList = () => {
         <ListItemContainer data-aos="fade-up">
           <h1>최근 봉사활동</h1>
           <VolunteerCardContainer>
+            {error && <h2>최근 봉사활동이 존재하지 않아요 🥲</h2>}
             {data === undefined || loading
               ? null
-              : data.slice(2).map((value: VolunteerCardItem) => {
-                  return (
-                    <SmallVolunteerCard key={value.title} cardItem={value} />
-                  );
-                })}
+              : data
+                  .slice(0, Math.min(3, data.length))
+                  .map((value: VolunteerCardItem) => {
+                    return (
+                      <SmallVolunteerCard key={value.title} cardItem={value} />
+                    );
+                  })}
           </VolunteerCardContainer>
         </ListItemContainer>
       </HomeVolunteerListContainer>

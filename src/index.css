@@ -5,10 +5,12 @@
 * {
     font-family: 'Kanit','Noto Sans KR', sans-serif;
 
-    --color-primary: #ffce31;
+    --color-primary: #fe9832;
+    --color-secondary: #ffce31;
     --wave-color: #def0ff;
     --color-primary-text: #212121;
     --color-secondary-text: #8e8e8e;
+    --color-primary-gray: #e0e0e0;
 }
 
 body {
