@@ -37,7 +37,9 @@ const HomeVolunteerList = () => {
   }, []);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [data, loading, error] = useFetchData("/v1/volunteers");
+  const [data, loading, error] = useFetchData<VolunteerCardItem[]>(
+    "/v1/volunteers?from=0&to=3&ordering=-id",
+  );
 
   return (
     <>
@@ -48,13 +50,9 @@ const HomeVolunteerList = () => {
             {error && <h2>최근 봉사활동이 존재하지 않아요 🥲</h2>}
             {data === undefined || loading
               ? null
-              : data
-                  .slice(0, Math.min(3, data.length))
-                  .map((value: VolunteerCardItem) => {
-                    return (
-                      <SmallVolunteerCard key={value.title} cardItem={value} />
-                    );
-                  })}
+              : data.map((value: VolunteerCardItem) => {
+                  return <SmallVolunteerCard key={value.id} cardItem={value} />;
+                })}
           </VolunteerCardContainer>
         </ListItemContainer>
       </HomeVolunteerListContainer>
