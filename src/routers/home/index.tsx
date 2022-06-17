@@ -3,7 +3,7 @@ import Footer from "../../components/common/footer";
 import Header from "../../components/common/header";
 import Hero from "../../components/home/hero";
 import HomeVolunteerList from "../../components/home/home-volunteer-list";
-import UnivLogoSlide from "../../components/home/univ-logo-slide";
+import UnivLogoSlide from "../../components/home/univ-logo-slider";
 
 const Home = () => {
   return (
