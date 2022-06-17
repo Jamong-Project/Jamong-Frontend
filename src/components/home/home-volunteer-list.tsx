@@ -3,10 +3,10 @@ import React, { useEffect } from "react";
 import styled from "@emotion/styled";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { VolunteerGetType } from "volunteer-type";
 import SmallVolunteerCard from "../small-volunteer-card";
 import useFetchData from "../../hooks/use-fetch-data";
 import GradientDivider from "../gradient-divider";
-import { VolunteerGetType } from "../../@types";
 
 const HomeVolunteerListContainer = styled.div`
   height: 400px;

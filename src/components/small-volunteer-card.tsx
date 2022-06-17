@@ -2,7 +2,7 @@
 import styled from "@emotion/styled";
 import { Card, CardMedia } from "@mui/material";
 import React from "react";
-import { VolunteerGetType } from "../@types";
+import { VolunteerGetType } from "volunteer-type";
 
 const CardContainer = styled.div`
   position: relative;

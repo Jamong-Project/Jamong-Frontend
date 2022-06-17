@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
-import { VolunteerGetType } from "../@types";
+import { VolunteerGetType } from "volunteer-type";
 import { timestampToDate } from "../utils";
 
 const VOLUNTEER_DATE: string = "봉사 날짜";

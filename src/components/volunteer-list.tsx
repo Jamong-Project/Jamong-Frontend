@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
+import { VolunteerGetType } from "volunteer-type";
 import VolunteerCard from "./volunteer-card";
-import { OrderingType, VolunteerGetType } from "../@types";
 import Pagination from "./pagination";
 import useFetchData from "../hooks/use-fetch-data";
 import { filterData, FilterType } from "../utils";

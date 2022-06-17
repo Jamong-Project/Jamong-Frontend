@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from "react";
+import { VolunteerPostType } from "volunteer-type";
 import Footer from "../../../components/common/footer";
 import Header from "../../../components/common/header";
 import HeaderTopSpace from "../../../components/common/header-top-space";
@@ -7,7 +8,6 @@ import MilkdownEditor from "../../../components/milkdown/milkdown-editor";
 import PostButton from "../../../components/post-button";
 import TitleUploader from "../../../components/title-uploader";
 import VolunteerToolBar from "../../../components/volunteer-tool-bar";
-import { VolunteerPostType } from "../../../@types/volunteer-post-type";
 import { timestampToUnixTimestamp } from "../../../utils";
 import { BodyContainer } from "./styles";
 

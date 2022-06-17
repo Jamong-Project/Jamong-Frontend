@@ -1,4 +1,4 @@
-export type OrderingType =
+declare type OrderingType =
   | "new"
   | "popular"
   | "title"
