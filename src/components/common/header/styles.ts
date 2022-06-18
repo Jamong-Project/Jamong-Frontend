@@ -1,6 +1,7 @@
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 
-export const HeaderContainer = styled.nav`
+export const HeaderContainer = styled.nav<{ showBackground: boolean }>`
   width: 100%;
   z-index: 10;
   display: flex;
@@ -11,6 +12,13 @@ export const HeaderContainer = styled.nav`
   transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   -webkit-transition: background-color 0.3s ease-in-out,
     box-shadow 0.3s ease-in-out;
+
+  ${(props) =>
+    props.showBackground &&
+    css`
+      background-color: white;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.05);
+    `}
 `;
 
 export const HeaderWrapper = styled.div`

@@ -36,7 +36,7 @@ const Header = () => {
   }, []);
 
   return (
-    <HeaderContainer className={showBackground ? "header-background" : ""}>
+    <HeaderContainer showBackground={showBackground}>
       <HeaderWrapper>
         <HeaderItemWrapper>
           <Logo width={42} height={42} style={{ margin: "0px 16px 0px 0px" }} />

@@ -1,3 +1,4 @@
+import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 
 export const HeroContainer = styled.article`
@@ -37,4 +38,28 @@ export const WaveContainer = styled.div`
   position: absolute;
   display: flex;
   bottom: 0;
+`;
+
+const RocketMove = keyframes`
+  0% {
+      transform: translate(0px, 0px);
+  }
+
+  50% {
+      transform: translate(-5px, -10px);
+  }
+
+  100% {
+      transform: translate(0px, 0px);
+  }
+`;
+
+export const Rocket = styled.img`
+  height: 300px;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-name: ${RocketMove};
 `;

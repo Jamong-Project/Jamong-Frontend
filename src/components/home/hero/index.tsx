@@ -7,6 +7,7 @@ import {
   HeroItemContainer,
   HeroItemDetailContainer,
   HeroTextContainer,
+  Rocket,
   WaveContainer,
 } from "./styles";
 
@@ -24,12 +25,7 @@ const Hero = () => {
               Let&apos;s get started
             </Button>
           </HeroTextContainer>
-          <img
-            className="rocket"
-            alt="rocket"
-            src="images/rocket.png"
-            height={300}
-          />
+          <Rocket alt="rocket" src="images/rocket.png" />
         </HeroItemDetailContainer>
       </HeroItemContainer>
       <HeroBackground>
