@@ -20,7 +20,7 @@ const HomeVolunteerList = () => {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, loading, error] = useFetchData<VolunteerGetType[]>(
-    "/v1/volunteers?from=0&to=3&ordering=-id",
+    "/v1/volunteers?from=0&to=2&ordering=-id",
   );
 
   const theme = useTheme();

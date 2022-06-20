@@ -8,7 +8,7 @@ import { filterData, FilterType } from "../../../utils";
 import OrderingButtonGroup from "../../common/ordering-button-group";
 import { CardBox, ListContainer, VolunteerListContainer } from "./styles";
 
-const DATA_PER_PAGE: number = 12;
+const DATA_PER_PAGE: number = 11;
 
 const orderingOption: { [key in OrderingType]: string } = {
   new: "-id",
