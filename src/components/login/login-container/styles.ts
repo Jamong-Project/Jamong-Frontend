@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
+import { centerChildStyle } from "../../../styles/common";
 
 export const LoginItemContainer = styled.div`
   margin-top: 60px;
-  display: flex;
   flex-direction: column;
   align-items: center;
+  ${centerChildStyle};
 `;
 
 export const LoginHeader = styled.div`

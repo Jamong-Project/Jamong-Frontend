@@ -1,10 +1,8 @@
 import styled from "@emotion/styled";
+import { centerChildStyle, widthLimitStyle } from "../../../styles/common";
 
-export const VolunteerListContainer = styled.div`
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 16px;
-`;
+export const VolunteerListContainer = styled.div(centerChildStyle);
+export const VolunteerListWrapper = styled.div(widthLimitStyle);
 
 export const ListContainer = styled.div`
   display: grid;

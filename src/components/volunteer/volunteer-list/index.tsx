@@ -6,7 +6,12 @@ import Pagination from "../../common/pagination";
 import useFetchData from "../../../hooks/use-fetch-data";
 import { filterData, FilterType } from "../../../utils";
 import OrderingButtonGroup from "../../common/ordering-button-group";
-import { CardBox, ListContainer, VolunteerListContainer } from "./styles";
+import {
+  CardBox,
+  ListContainer,
+  VolunteerListContainer,
+  VolunteerListWrapper,
+} from "./styles";
 
 const DATA_PER_PAGE: number = 11;
 
@@ -45,24 +50,26 @@ const VolunteerList = () => {
 
   return (
     <VolunteerListContainer>
-      <OrderingButtonGroup path="volunteer" current={ordering} />
-      <ListContainer>
-        {
+      <VolunteerListWrapper>
+        <OrderingButtonGroup path="volunteer" current={ordering} />
+        <ListContainer>
           {
-            [FilterType.DATA_GET_FAILED]: <div>에러가 발생했습니다.</div>,
-            [FilterType.DATA_GET_LOADING]: null,
-            [FilterType.DATA_GET_SUCCESSFUL]:
-              data &&
-              data.map((volunteer: VolunteerGetType) => (
-                <CardBox key={volunteer.id}>
-                  <VolunteerCard volunteer={volunteer} />
-                </CardBox>
-              )),
-            [FilterType.DATA_GET_EMPTY]: <div>데이터가 없습니다.</div>,
-          }[filterData(data, loading, error)]
-        }
-      </ListContainer>
-      <Pagination page={page ?? 0} totalPages={totalPages} />
+            {
+              [FilterType.DATA_GET_FAILED]: <div>에러가 발생했습니다.</div>,
+              [FilterType.DATA_GET_LOADING]: null,
+              [FilterType.DATA_GET_SUCCESSFUL]:
+                data &&
+                data.map((volunteer: VolunteerGetType) => (
+                  <CardBox key={volunteer.id}>
+                    <VolunteerCard volunteer={volunteer} />
+                  </CardBox>
+                )),
+              [FilterType.DATA_GET_EMPTY]: <div>데이터가 없습니다.</div>,
+            }[filterData(data, loading, error)]
+          }
+        </ListContainer>
+        <Pagination page={page ?? 0} totalPages={totalPages} />
+      </VolunteerListWrapper>
     </VolunteerListContainer>
   );
 };

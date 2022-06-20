@@ -1,11 +1,11 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
+import { centerChildStyle, widthLimitStyle } from "../../../styles/common";
 
 export const HeaderContainer = styled.nav<{ showBackground: boolean }>`
+  ${centerChildStyle};
   width: 100%;
   z-index: 10;
-  display: flex;
-  justify-content: center;
   position: fixed;
   top: 0px;
   z-index: 10;
@@ -22,8 +22,7 @@ export const HeaderContainer = styled.nav<{ showBackground: boolean }>`
 `;
 
 export const HeaderWrapper = styled.div`
-  width: 100%;
-  max-width: 1280px;
+  ${widthLimitStyle};
   display: flex;
   justify-content: space-between;
   align-items: center;

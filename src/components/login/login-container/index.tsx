@@ -1,3 +1,4 @@
+import { useTheme } from "@emotion/react";
 import { ArrowBackIos } from "@mui/icons-material";
 import { Paper, IconButton, Modal, Button } from "@mui/material";
 import React, { useCallback, useRef } from "react";
@@ -34,6 +35,7 @@ const LoginContainer = () => {
   const navigate = useNavigate();
   const naverLoginRef = useRef<HTMLDivElement>(null);
   const [openModal, setOpenModal] = React.useState<boolean>(false);
+  const theme = useTheme();
   const handleOpenModal = useCallback(() => {
     setOpenModal(true);
   }, []);
@@ -88,7 +90,7 @@ const LoginContainer = () => {
             <Button
               sx={{
                 ...registerTextStyle,
-                color: "var(--color-primary)",
+                color: theme.colors.primary,
                 fontWeight: "bold",
               }}
               onClick={handleOpenModal}
