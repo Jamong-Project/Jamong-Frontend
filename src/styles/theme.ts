@@ -8,8 +8,8 @@ export const size = {
 
 const theme = {
   mq: {
-    laptop: `@media only screen and (min-width: ${size.largest})`,
-    mobile: `@media only screen and (min-width: ${size.small})`,
+    laptop: `@media only screen and (max-width: ${size.largest})`,
+    mobile: `@media only screen and (max-width: ${size.small})`,
   },
   colors: {
     primary: "#e76f51",

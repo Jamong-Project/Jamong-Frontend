@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 
 export const HomeVolunteerListContainer = styled.div`
-  height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,4 +20,8 @@ export const VolunteerCardContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-around;
+
+  ${(props) => props.theme.mq.mobile} {
+    flex-wrap: wrap;
+  }
 `;
