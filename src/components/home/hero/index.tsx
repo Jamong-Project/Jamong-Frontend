@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "@mui/material";
+import { useTheme } from "@emotion/react";
 import { ReactComponent as Wave } from "../../../assets/wave.svg";
 import {
   HeroBackground,
@@ -12,6 +13,7 @@ import {
 } from "./styles";
 
 const Hero = () => {
+  const theme = useTheme();
   return (
     <HeroContainer>
       <HeroItemContainer>
@@ -30,7 +32,7 @@ const Hero = () => {
       </HeroItemContainer>
       <HeroBackground>
         <WaveContainer>
-          <Wave fill="var(--wave-color)" width="100%" />
+          <Wave fill={theme.colors.waveColor} width="100%" />
         </WaveContainer>
       </HeroBackground>
     </HeroContainer>

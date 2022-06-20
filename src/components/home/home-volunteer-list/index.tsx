@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useTheme } from "@emotion/react";
 import { VolunteerGetType } from "volunteer-type";
 import HomeVolunteerListItem from "./home-volunteer-list-item";
 import useFetchData from "../../../hooks/use-fetch-data";
@@ -22,6 +23,8 @@ const HomeVolunteerList = () => {
     "/v1/volunteers?from=0&to=3&ordering=-id",
   );
 
+  const theme = useTheme();
+
   return (
     <>
       <HomeVolunteerListContainer>
@@ -39,7 +42,10 @@ const HomeVolunteerList = () => {
           </VolunteerCardContainer>
         </ListItemContainer>
       </HomeVolunteerListContainer>
-      <GradientDivider topColor="var(--wave-color)" bottomColor="transparent" />
+      <GradientDivider
+        topColor={theme.colors.waveColor}
+        bottomColor="transparent"
+      />
     </>
   );
 };

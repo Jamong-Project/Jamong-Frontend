@@ -6,7 +6,7 @@ export const HomeVolunteerListContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 16px;
-  background-color: var(--wave-color);
+  background-color: ${(props) => props.theme.colors.waveColor};
 `;
 
 export const ListItemContainer = styled.div`
