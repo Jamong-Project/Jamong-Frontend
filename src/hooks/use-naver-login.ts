@@ -12,7 +12,7 @@ const useNaverLogin = (color: string, type: number, height: number) => {
   const initializedNaverLogin = useCallback(() => {
     const naverLogin = new naver.LoginWithNaverId({
       clientId: process.env.REACT_APP_NAVER_OAUTH_CLIENT_ID,
-      callbackUrl: "http://localhost:3000/naver-auth",
+      callbackUrl: "http://localhost:3000/login/naver-auth",
       isPopup: false,
       loginButton: {
         color,

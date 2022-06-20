@@ -18,11 +18,13 @@ const useFetchData = <T>(
     Client.get(path, config)
       .then((response) => {
         setData(response.data);
+        setError(undefined);
         setHeader(response.headers);
         setLoading(false);
       })
       .catch((e) => {
         setError(e);
+        setData(undefined);
         setLoading(false);
       });
   }, [path, config, launch]);

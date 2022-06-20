@@ -1,15 +1,24 @@
+import { ThemeProvider } from "@emotion/react";
+import { ThemeProvider as MuiThemeProvider } from "@mui/material";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import "./index.css";
+import GlobalStyle from "./styles/global-style";
+import muiTheme from "./styles/mui-theme";
+import theme from "./styles/theme";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <MuiThemeProvider theme={muiTheme}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <App />
+      </ThemeProvider>
+    </MuiThemeProvider>
   </React.StrictMode>,
 );
 
