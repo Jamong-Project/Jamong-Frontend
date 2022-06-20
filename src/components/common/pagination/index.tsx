@@ -4,7 +4,7 @@ import {
   PaginationItem,
 } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
-import { hasQuery } from "../../../utils";
+import { changePage, hasQuery } from "../../../utils";
 import { PaginationContainer } from "./styles";
 
 export type PaginationProps = {
@@ -25,10 +25,7 @@ const Pagination = ({ page, totalPages }: PaginationProps) => {
             component={Link}
             to={
               hasQuery(location.search)
-                ? `${location.pathname}${location.search.replace(
-                    /&page=\d+/,
-                    "",
-                  )}&page=${item.page}`
+                ? changePage(location.pathname, location.search, item.page)
                 : `${location.pathname}?page=${item.page}`
             }
             {...item}
