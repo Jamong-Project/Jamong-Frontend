@@ -24,7 +24,7 @@ const App = () => {
   };
 
   const loggedOutCallback = () => {
-    const accessToken = localStorage.getItem("localStorage");
+    const accessToken = localStorage.getItem("com.naver.nid.access_token");
 
     if (!accessToken) return;
 
