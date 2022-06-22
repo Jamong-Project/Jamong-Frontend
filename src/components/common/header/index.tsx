@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ReactComponent as Logo } from "../../../assets/logo.svg";
+import useLoginStore from "../../../stores/login-store";
+import HeaderUserMenu from "./header-user-menu";
 import SignInUpButton from "./sign-in-up-button";
 import {
   HeaderContainer,
@@ -25,6 +27,7 @@ const Header = () => {
 
   // Show background if the page is at the top
   const [showBackground, setShowBackground] = useState<boolean>(false);
+  const { isLoggedIn } = useLoginStore();
 
   const handleScroll = () => setShowBackground(window.scrollY > 0);
 
@@ -56,7 +59,7 @@ const Header = () => {
             ))}
           </ul>
         </HeaderItemWrapper>
-        <SignInUpButton />
+        {isLoggedIn ? <HeaderUserMenu /> : <SignInUpButton />}
       </HeaderWrapper>
     </HeaderContainer>
   );

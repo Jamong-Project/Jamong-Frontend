@@ -6,10 +6,36 @@ import Volunteer from "./routers/volunteer/[id]";
 import Volunteers from "./routers/volunteer";
 import VolunteerPost from "./routers/volunteer/create";
 import Login from "./routers/login";
+import useLoginStore from "./stores/login-store";
 import NaverAuth from "./routers/login/naver-auth";
 import "./App.css";
+import useLoginCheck from "./hooks/use-login-check";
 
 const App = () => {
+  const { isLoggedIn, setIsLoggedIn, setUser } = useLoginStore();
+
+  const loggedInCallback = () => {
+    setUser({
+      name: "Hello",
+      profileImage: "World",
+      role: "No",
+      email: "email@email.com",
+    });
+  };
+
+  const loggedOutCallback = () => {
+    const accessToken = localStorage.getItem("localStorage");
+
+    if (!accessToken) return;
+
+    setIsLoggedIn(true);
+  };
+
+  useLoginCheck(isLoggedIn, {
+    loggedInCallback,
+    loggedOutCallback,
+  });
+
   return (
     <BrowserRouter>
       <Routes>
