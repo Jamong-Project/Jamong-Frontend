@@ -11,6 +11,19 @@ declare module "volunteer-type" {
     currentPeople: number;
   };
 
+  declare type VolunteerGetDetailType = {
+    id: string;
+    title: string;
+    content: string;
+    pictures: {
+      url: string;
+    }[];
+    volunteerDate: number;
+    applicationDate: number;
+    maximumPeople: number;
+    currentPeople: number;
+  };
+
   declare type VolunteerPostType = {
     title: string;
     content: string;
