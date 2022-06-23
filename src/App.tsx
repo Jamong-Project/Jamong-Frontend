@@ -10,25 +10,37 @@ import useLoginStore from "./stores/login-store";
 import NaverAuth from "./routers/login/naver-auth";
 import "./App.css";
 import useLoginCheck from "./hooks/use-login-check";
+import Client from "./utils/client";
+import { ACCESS_TOKEN_STORAGE_KEY } from "./constants/string";
 
 const App = () => {
-  const { isLoggedIn, setIsLoggedIn, setUser } = useLoginStore();
+  const { isLoggedIn, setIsLoggedIn, setUser, setIsLoading, isLoading } =
+    useLoginStore();
 
   const loggedInCallback = () => {
-    setUser({
-      name: "Hello",
-      profileImage: "World",
-      role: "No",
-      email: "email@email.com",
-    });
+    Client.post("/login", {
+      token: localStorage.getItem(ACCESS_TOKEN_STORAGE_KEY),
+    })
+      .then((r) => setUser(r.data))
+      .catch(() => {
+        alert("로그인 만료");
+        setIsLoggedIn(false);
+        setUser(undefined);
+        localStorage.removeItem(ACCESS_TOKEN_STORAGE_KEY);
+      })
+      .then(() => {
+        if (isLoading) setIsLoading(false);
+      });
   };
 
   const loggedOutCallback = () => {
-    const accessToken = localStorage.getItem("com.naver.nid.access_token");
+    const accessToken = localStorage.getItem(ACCESS_TOKEN_STORAGE_KEY);
 
-    if (!accessToken) return;
+    if (!accessToken || accessToken === "none") return;
 
     setIsLoggedIn(true);
+
+    if (isLoading) setIsLoading(false);
   };
 
   useLoginCheck(isLoggedIn, {

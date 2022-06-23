@@ -27,7 +27,7 @@ const Header = () => {
 
   // Show background if the page is at the top
   const [showBackground, setShowBackground] = useState<boolean>(false);
-  const { isLoggedIn } = useLoginStore();
+  const { isLoggedIn, isLoading } = useLoginStore();
 
   const handleScroll = () => setShowBackground(window.scrollY > 0);
 
@@ -59,7 +59,7 @@ const Header = () => {
             ))}
           </ul>
         </HeaderItemWrapper>
-        {isLoggedIn ? <HeaderUserMenu /> : <SignInUpButton />}
+        {!isLoading && isLoggedIn ? <HeaderUserMenu /> : <SignInUpButton />}
       </HeaderWrapper>
     </HeaderContainer>
   );

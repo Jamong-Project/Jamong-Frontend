@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router";
+
+const ACCESS_TOKEN_KEY: string = "access_token";
 
 const NaverAuth = () => {
   const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash.includes(ACCESS_TOKEN_KEY)) {
+      window.localStorage.setItem(
+        ACCESS_TOKEN_KEY,
+        location.hash.split("=")[1].split("&")[0] ?? "none",
+      );
+    }
+  }, []);
 
   return (
     <div>

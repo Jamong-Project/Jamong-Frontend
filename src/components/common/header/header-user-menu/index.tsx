@@ -1,14 +1,23 @@
-import { AccountCircle } from "@mui/icons-material";
 import { Avatar, Divider, IconButton, Menu, MenuItem } from "@mui/material";
 import React, { useState } from "react";
+import { ACCESS_TOKEN_STORAGE_KEY } from "../../../../constants/string";
 import useLoginStore from "../../../../stores/login-store";
 
 const HeaderUserMenu = () => {
   const [userMenu, setUserMenu] = useState<HTMLElement | null>(null);
-  const { user } = useLoginStore();
+  const { user, setIsLoggedIn, setUser } = useLoginStore();
 
   const handleMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
     setUserMenu(event.currentTarget);
+  };
+
+  const logoutEvent = () => {
+    if (localStorage.getItem(ACCESS_TOKEN_STORAGE_KEY)) {
+      localStorage.removeItem(ACCESS_TOKEN_STORAGE_KEY);
+    }
+
+    setIsLoggedIn(false);
+    setUser(undefined);
   };
 
   return (
@@ -19,7 +28,7 @@ const HeaderUserMenu = () => {
         aria-haspopup="true"
         onClick={handleMenu}
       >
-        <AccountCircle />
+        <Avatar src={user?.profileImage} />
       </IconButton>
       <Menu
         anchorEl={userMenu}
@@ -48,11 +57,11 @@ const HeaderUserMenu = () => {
         }}
       >
         <MenuItem>
-          <Avatar /> {user?.name}
+          <Avatar src={user?.profileImage} /> {user?.name}
         </MenuItem>
         <Divider />
         <MenuItem>내 계정 설정</MenuItem>
-        <MenuItem>로그아웃</MenuItem>
+        <MenuItem onClick={logoutEvent}>로그아웃</MenuItem>
       </Menu>
     </div>
   );
