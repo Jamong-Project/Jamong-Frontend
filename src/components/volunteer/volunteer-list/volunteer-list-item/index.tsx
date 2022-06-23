@@ -43,7 +43,7 @@ const VolunteerListItem: React.FC<VolunteerListItemProps> = ({ volunteer }) => {
       }}
       variant="outlined"
       component={Link}
-      to={`/list/${volunteer.id}`}
+      to={`/volunteer/${volunteer.id}`}
     >
       <CardMedia
         component="img"
