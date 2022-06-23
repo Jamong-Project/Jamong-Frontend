@@ -5,6 +5,7 @@ import { centerChildStyle, widthLimitStyle } from "../../../styles/common";
 export const HeaderContainer = styled.nav<{ showBackground: boolean }>`
   ${centerChildStyle};
   width: 100%;
+  height: 72px;
   z-index: 10;
   position: fixed;
   top: 0px;
