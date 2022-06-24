@@ -19,8 +19,10 @@ const theme = {
     primaryGray: "#e0e0e0",
     accentColor: "#f4a261",
     waveColor: "#def0ff",
+    divider: "#e0e0e0",
+    transparentBlack: "rgba(0, 0, 0, 0.4)",
   },
-  fontSize: {
+  fontSizes: {
     xxs: "0.5rem",
     xs: "0.75rem",
     sm: "1rem",

@@ -22,6 +22,8 @@ declare module "@emotion/react" {
       primaryGray: string;
       accentColor: string;
       waveColor: string;
+      divider: string;
+      transparentBlack: string;
     };
   }
 }
