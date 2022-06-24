@@ -1,59 +1,13 @@
-import styled from "@emotion/styled";
 import { Backdrop, Icon, IconButton } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import CarouselPager from "./carousel-pager";
-
-const ImageCarouselContainer = styled.div`
-  width: 300px;
-  height: 300px;
-  position: relative;
-  overflow: hidden;
-  background-color: white;
-  border: 1px solid ${(props) => props.theme.colors.divider};
-`;
-
-const ButtonContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  pointer-events: none;
-  z-index: 10;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  > * {
-    pointer-events: all;
-  }
-`;
-
-const ImageContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  cursor: pointer;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-`;
-
-const CarouselPagesContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  pointer-events: none;
-  z-index: 9;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-`;
-
-const ImageItem = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
+import {
+  ButtonContainer,
+  CarouselPagesContainer,
+  ImageCarouselContainer,
+  ImageContainer,
+  ImageItem,
+} from "./styles";
 
 const setVisibility = (enabled: boolean) => (enabled ? "visible" : "hidden");
 

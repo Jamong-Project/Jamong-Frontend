@@ -1,15 +1,5 @@
-import styled from "@emotion/styled";
 import React from "react";
-
-const CarouselPagerContainer = styled.div<{ hasBackground: boolean }>`
-  display: inline-flex;
-  padding: 8px;
-  border-radius: 2px;
-  background-color: ${(props) =>
-    props.hasBackground && props.theme.colors.transparentBlack};
-  font-size: ${(props) => props.theme.fontSizes.sm};
-  color: white;
-`;
+import { CarouselPagerContainer } from "./styles";
 
 export type CarouselPagerProps = {
   maximumPages: number;
