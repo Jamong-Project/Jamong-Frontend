@@ -2,7 +2,9 @@ import styled from "@emotion/styled";
 
 export const ImageCarouselContainer = styled.div`
   width: 300px;
+  min-width: 300px;
   height: 300px;
+  min-height: 300px;
   position: relative;
   overflow: hidden;
   background-color: white;
