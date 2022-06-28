@@ -5,6 +5,7 @@ declare module "@emotion/react" {
     mq: {
       laptop: string;
       mobile: string;
+      tablet: string;
     };
     fontSizes: {
       xxs: string;
