@@ -1,7 +1,7 @@
 import React from "react";
 import { VolunteerGetDetailType } from "volunteer-type";
 import { Button, Divider, Icon } from "@mui/material";
-import { getFullDateString } from "../../../../utils";
+import { getFullDateString } from "../../../../../utils";
 import ParticipateUsers from "./participate-users";
 import {
   ButtonContainer,
@@ -13,22 +13,22 @@ import {
 } from "./styles";
 
 export type VolunteerInformationProps = {
-  data: VolunteerGetDetailType;
+  volunteer: VolunteerGetDetailType;
 };
 
-const VolunteerInformation = ({ data }: VolunteerInformationProps) => {
+const VolunteerInformation = ({ volunteer }: VolunteerInformationProps) => {
   return (
     <VolunteerInformationContainer>
-      <TitleContainer>{data.title}</TitleContainer>
+      <TitleContainer>{volunteer.title}</TitleContainer>
       <Divider />
       <DateContainer>
         <DateItem>
           <DateInfoItem>신청 시작일 - </DateInfoItem>
-          {getFullDateString(data.applicationDate)}
+          {getFullDateString(volunteer.applicationDate)}
         </DateItem>
         <DateItem>
           <DateInfoItem>봉사 시작일 - </DateInfoItem>
-          {getFullDateString(data.volunteerDate)}
+          {getFullDateString(volunteer.volunteerDate)}
         </DateItem>
       </DateContainer>
       <ParticipateUsers

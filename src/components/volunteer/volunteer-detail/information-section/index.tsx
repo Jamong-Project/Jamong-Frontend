@@ -1,33 +1,27 @@
 import React from "react";
-import { VolunteerGetDetailType } from "volunteer-type";
-import ImageCarousel from "../image-carousel";
-import VolunteerInformation from "../volunteer-information";
+import ImageCarousel from "./image-carousel";
+import VolunteerInformation from "./volunteer-information";
 import {
   InformationSectionContainer,
   InformationSectionWrapper,
 } from "./styles";
+import useVolunteerStore from "../../../../stores/volunteer-store";
 
-export type InformationSectionProps = {
-  volunteer?: VolunteerGetDetailType;
-};
+const InformationSection = () => {
+  const { volunteer } = useVolunteerStore();
 
-const InformationSection = ({ volunteer }: InformationSectionProps) => {
   return (
     <InformationSectionContainer>
       <InformationSectionWrapper>
         {volunteer && (
           <>
             <ImageCarousel images={volunteer.pictures.map(({ url }) => url)} />
-            <VolunteerInformation data={volunteer} />
+            <VolunteerInformation volunteer={volunteer} />
           </>
         )}
       </InformationSectionWrapper>
     </InformationSectionContainer>
   );
-};
-
-InformationSection.defaultProps = {
-  volunteer: undefined,
 };
 
 export default InformationSection;
