@@ -1,25 +1,26 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Avatar, Chip } from "@mui/material";
-import { ParticipateUsersContainer } from "./styles";
+import { EmptyParticipateText, ParticipateUsersContainer } from "./styles";
 
 export type ParticipateUsersProps = {
-  users: {
-    id: string;
-    name: string;
-    image: string;
-  }[];
+  users: User[];
 };
 
 const ParticipateUsers = ({ users }: ParticipateUsersProps) => {
+  const hasChild = useMemo(() => users && users.length > 0, [users]);
   return (
-    <ParticipateUsersContainer>
-      {users.map((user) => (
-        <Chip
-          avatar={<Avatar alt={user.name} src={user.image} />}
-          key={user.id}
-          label={user.name}
-        />
-      ))}
+    <ParticipateUsersContainer hasChild={hasChild}>
+      {hasChild ? (
+        users.map((user) => (
+          <Chip
+            avatar={<Avatar alt={user.naverId} src={user.profileImage} />}
+            key={user.naverId}
+            label={user.name}
+          />
+        ))
+      ) : (
+        <EmptyParticipateText>아직 지원자가 없어요..🥲</EmptyParticipateText>
+      )}
     </ParticipateUsersContainer>
   );
 };

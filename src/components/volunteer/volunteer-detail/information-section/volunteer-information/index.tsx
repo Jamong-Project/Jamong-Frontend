@@ -31,13 +31,7 @@ const VolunteerInformation = ({ volunteer }: VolunteerInformationProps) => {
           {getFullDateString(volunteer.volunteerDate)}
         </DateItem>
       </DateContainer>
-      <ParticipateUsers
-        users={Array.from(Array(10).keys()).map((item: number) => ({
-          id: item.toString(),
-          name: `유저${item}`,
-          image: "https://via.placeholder.com/150",
-        }))}
-      />
+      <ParticipateUsers users={volunteer.applicants} />
       <ButtonContainer>
         <Button
           variant="contained"
