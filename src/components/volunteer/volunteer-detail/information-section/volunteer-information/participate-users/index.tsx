@@ -19,7 +19,7 @@ const ParticipateUsers = ({ users }: ParticipateUsersProps) => {
           />
         ))
       ) : (
-        <EmptyParticipateText>아직 지원자가 없어요..🥲</EmptyParticipateText>
+        <EmptyParticipateText>아직 지원자가 없어요</EmptyParticipateText>
       )}
     </ParticipateUsersContainer>
   );
