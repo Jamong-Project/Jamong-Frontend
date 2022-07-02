@@ -22,6 +22,7 @@ declare module "volunteer-type" {
     applicationDate: number;
     maximumPeople: number;
     currentPeople: number;
+    applicants: User[];
   };
 
   declare type VolunteerPostType = {

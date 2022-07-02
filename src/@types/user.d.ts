@@ -7,4 +7,5 @@ declare type User = {
   mobileE164: string;
   name: string;
   role: string;
+  candinalNumber: string;
 };
