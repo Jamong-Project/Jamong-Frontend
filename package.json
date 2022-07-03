@@ -9,7 +9,7 @@
     "@milkdown/plugin-listener": "6.1.5",
     "@milkdown/plugin-menu": "6.1.5",
     "@milkdown/preset-commonmark": "6.1.5",
-    "@milkdown/prose": "6.1.4",
+    "@milkdown/prose": "6.1.5",
     "@milkdown/react": "6.1.4",
     "@milkdown/theme-nord": "6.1.4",
     "@mui/icons-material": "5.8.3",
