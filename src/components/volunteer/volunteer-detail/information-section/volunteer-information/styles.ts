@@ -29,8 +29,3 @@ export const DateInfoItem = styled.span`
 `;
 
 export const DateContainer = styled.ul``;
-
-export const ButtonContainer = styled.div`
-  display: flex;
-  gap: 16px;
-`;
