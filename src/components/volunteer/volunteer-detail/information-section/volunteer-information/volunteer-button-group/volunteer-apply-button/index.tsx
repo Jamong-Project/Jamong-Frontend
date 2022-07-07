@@ -12,7 +12,7 @@ const VolunteerApplyButton = () => {
   const { volunteer } = useVolunteerStore();
 
   const [userApplicationState, setUserApplicationState] = useState<
-    "init" | "available" | "applied"
+    "init" | "available" | "applied" | "loggedOut"
   >("init");
 
   const location = useLocation();
@@ -20,6 +20,11 @@ const VolunteerApplyButton = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (!isLoggedIn) {
+      setUserApplicationState("loggedOut");
+      return;
+    }
+
     if (!volunteer || !user) return;
 
     const applicantsId: String[] = volunteer.applicants.map(
@@ -29,22 +34,17 @@ const VolunteerApplyButton = () => {
     setUserApplicationState(
       applicantsId.includes(user.naverId) ? "applied" : "available",
     );
-  }, [volunteer, user]);
+  }, [volunteer, user, isLoggedIn]);
 
   const handleClick = () => {
     if (!user) return;
 
     Client.post(`/v1/volunteers/${postId}/apply`, {
       email: user.email,
-    })
-      .then(() => {
-        console.log("success");
-        navigate(0);
-        alert("지원 완료!");
-      })
-      .catch(() => {
-        console.log("error");
-      });
+    }).then(() => {
+      navigate(0);
+      alert("지원 완료!");
+    });
   };
 
   return (
@@ -65,6 +65,7 @@ const VolunteerApplyButton = () => {
               size={VOLUNTEER_BUTTON_CIRCULAR_PROGRESS_SIZE}
             />
           ),
+          loggedOut: "로그인 필요",
         }[userApplicationState]
       }
     </Button>
