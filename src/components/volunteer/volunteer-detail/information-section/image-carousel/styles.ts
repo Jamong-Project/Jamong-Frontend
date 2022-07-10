@@ -1,8 +1,7 @@
 import styled from "@emotion/styled";
 
 export const ImageCarouselContainer = styled.div`
-  aspect-ratio: 1;
-  height: 100%;
+  aspect-ratio: 1 / 1;
   min-height: 300px;
   position: relative;
   overflow: hidden;

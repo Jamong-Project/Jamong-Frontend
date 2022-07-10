@@ -1,6 +1,7 @@
 import create from "zustand";
 
 type User = {
+  naverId: string;
   profileImage: string;
   name: string;
   role: string;
