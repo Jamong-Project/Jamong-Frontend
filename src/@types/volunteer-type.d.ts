@@ -23,6 +23,7 @@ declare module "volunteer-type" {
     maximumPeople: number;
     currentPeople: number;
     applicants: User[];
+    favoriteUsers: User[];
   };
 
   declare type VolunteerPostType = {

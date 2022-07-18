@@ -1,13 +1,17 @@
 import { Button, CircularProgress } from "@mui/material";
-import React, { useEffect, useMemo, useState } from "react";
-import { useLocation, useNavigate } from "react-router";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import useLoginStore from "../../../../../../../stores/login-store";
 import useVolunteerStore from "../../../../../../../stores/volunteer-store";
 import Client from "../../../../../../../utils/client";
 
 const VOLUNTEER_BUTTON_CIRCULAR_PROGRESS_SIZE: number = 20;
 
-const VolunteerApplyButton = () => {
+export type VolunteerApplyButtonProps = {
+  postId: string;
+};
+
+const VolunteerApplyButton = ({ postId }: VolunteerApplyButtonProps) => {
   const { isLoggedIn, user } = useLoginStore();
   const { volunteer } = useVolunteerStore();
 
@@ -15,8 +19,6 @@ const VolunteerApplyButton = () => {
     "init" | "available" | "applied" | "loggedOut"
   >("init");
 
-  const location = useLocation();
-  const postId = useMemo(() => location.pathname.split("/")[2], [location]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -41,10 +43,12 @@ const VolunteerApplyButton = () => {
 
     Client.post(`/v1/volunteers/${postId}/apply`, {
       email: user.email,
-    }).then(() => {
-      navigate(0);
-      alert("지원 완료!");
-    });
+    })
+      .then(() => {
+        navigate(0);
+        alert("지원 완료!");
+      })
+      .catch((e) => console.log(e));
   };
 
   return (
