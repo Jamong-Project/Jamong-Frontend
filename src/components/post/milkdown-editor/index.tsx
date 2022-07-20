@@ -33,7 +33,7 @@ const MilkdownEditor = ({ callback }: MilkdownEditorProps) => {
   return (
     <MilkdownContainer>
       <MilkdownEditorContainer>
-        <ReactEditor editor={editor} />
+        <ReactEditor editor={editor.editor} />
       </MilkdownEditorContainer>
     </MilkdownContainer>
   );
