@@ -6,6 +6,7 @@ import Header from "../../../components/common/header";
 import HeaderTopSpace from "../../../components/common/header/header-top-space";
 import InformationSection from "../../../components/volunteer/volunteer-detail/information-section";
 import ReadOnlyMilkdown from "../../../components/volunteer/volunteer-detail/read-only-milkdown";
+import useAuthCheck from "../../../hooks/use-auth-check";
 import useFetchData from "../../../hooks/use-fetch-data";
 import useVolunteerStore from "../../../stores/volunteer-store";
 
@@ -15,6 +16,8 @@ const Volunteer = () => {
   const [data, loading] = useFetchData<VolunteerGetDetailType>(
     `/v1/volunteers/${id}`,
   );
+
+  useAuthCheck();
 
   useEffect(() => {
     setIsLoading(loading);

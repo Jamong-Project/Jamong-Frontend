@@ -8,12 +8,15 @@ import MilkdownEditor from "../../../components/post/milkdown-editor";
 import PostButton from "../../../components/post/post-button";
 import TitleUploader from "../../../components/post/title-uploader";
 import VolunteerToolBar from "../../../components/post/volunteer-tool-bar";
+import useAuthCheck from "../../../hooks/use-auth-check";
 import { timestampToUnixTimestamp } from "../../../utils";
 import { BodyContainer } from "./styles";
 
 const formData = new FormData();
 
 const VolunteerCreate = () => {
+  useAuthCheck();
+
   const [requestBody, setRequestBody] = useState<VolunteerPostType>({
     title: "",
     content: "",
