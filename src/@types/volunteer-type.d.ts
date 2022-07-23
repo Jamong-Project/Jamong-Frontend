@@ -24,6 +24,7 @@ declare module "volunteer-type" {
     currentPeople: number;
     applicants: User[];
     favoriteUsers: User[];
+    comments: Comment[];
   };
 
   declare type VolunteerPostType = {
