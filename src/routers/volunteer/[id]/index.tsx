@@ -4,6 +4,7 @@ import { VolunteerGetDetailType } from "volunteer-type";
 import Footer from "../../../components/common/footer";
 import Header from "../../../components/common/header";
 import HeaderTopSpace from "../../../components/common/header/header-top-space";
+import CommentSection from "../../../components/volunteer/volunteer-detail/comment-section";
 import InformationSection from "../../../components/volunteer/volunteer-detail/information-section";
 import ReadOnlyMilkdown from "../../../components/volunteer/volunteer-detail/read-only-milkdown";
 import useAuthCheck from "../../../hooks/use-auth-check";
@@ -30,6 +31,7 @@ const Volunteer = () => {
       <HeaderTopSpace />
       <InformationSection />
       {data && <ReadOnlyMilkdown text={data.content} />}
+      <CommentSection />
       <Footer />
     </div>
   );
