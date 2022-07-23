@@ -4,7 +4,7 @@ import { centerChildStyle, widthLimitStyle } from "../../../../styles/common";
 
 export const CommentSectionContainer = styled.section`
   ${centerChildStyle};
-  margin-bottom: 16px;
+  margin: 16px 0;
 `;
 
 export const CommentSectionWrapper = styled.div`

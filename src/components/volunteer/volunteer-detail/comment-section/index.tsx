@@ -1,11 +1,12 @@
 import React from "react";
+import CommentInput from "./comment-input";
 import { CommentSectionContainer, CommentSectionWrapper } from "./styles";
 
 const CommentSection = () => {
   return (
     <CommentSectionContainer>
       <CommentSectionWrapper>
-        <h2>Comments</h2>
+        <CommentInput />
       </CommentSectionWrapper>
     </CommentSectionContainer>
   );
