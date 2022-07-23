@@ -1,28 +1,10 @@
 import React from "react";
-import styled from "@emotion/styled";
 import { Avatar, Button, TextField } from "@mui/material";
 import { useNavigate, useParams } from "react-router";
 import { useInput } from "../../../../../hooks/use-input";
 import useLoginStore from "../../../../../stores/login-store";
 import Client from "../../../../../utils/client";
-
-const CommentInputContainer = styled.div`
-  display: flex;
-  width: 100%;
-  gap: 16px;
-
-  ${({ theme }) => theme.mq.mobile} {
-    flex-direction: column;
-    gap: 0px;
-  }
-`;
-
-const TextInputContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  width: 100%;
-`;
+import { CommentInputContainer, TextInputContainer } from "./styles";
 
 const CommentInput = () => {
   const { isLoggedIn, user } = useLoginStore();
