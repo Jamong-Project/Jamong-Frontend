@@ -1,5 +1,6 @@
 import React from "react";
 import CommentInput from "./comment-input";
+import CommentList from "./comment-list";
 import { CommentSectionContainer, CommentSectionWrapper } from "./styles";
 
 const CommentSection = () => {
@@ -7,6 +8,7 @@ const CommentSection = () => {
     <CommentSectionContainer>
       <CommentSectionWrapper>
         <CommentInput />
+        <CommentList />
       </CommentSectionWrapper>
     </CommentSectionContainer>
   );

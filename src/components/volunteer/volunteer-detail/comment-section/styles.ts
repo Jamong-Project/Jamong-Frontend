@@ -10,6 +10,7 @@ export const CommentSectionContainer = styled.section`
 export const CommentSectionWrapper = styled.div`
   display: flex;
   gap: 16px;
+  flex-direction: column;
   ${(props) => props.theme.mq.tablet} {
     flex-wrap: wrap;
   }

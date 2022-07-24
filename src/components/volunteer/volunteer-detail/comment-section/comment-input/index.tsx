@@ -16,7 +16,7 @@ const CommentInput = () => {
     if (!user || !isLoggedIn) return;
 
     Client.post(`/v1/volunteers/${id}/comments`, {
-      content: comment,
+      content: comment.value,
       email: user.email,
     }).then(() => {
       navigate(0);
