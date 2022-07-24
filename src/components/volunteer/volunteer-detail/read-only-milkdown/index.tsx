@@ -33,7 +33,7 @@ const ReadOnlyMilkdown = ({ text }: ReadOnlyMilkdownProps) => {
   return (
     <MilkdownContainer>
       <MilkdownEditorContainer>
-        <ReactEditor editor={editor} />
+        <ReactEditor editor={editor.editor} />
       </MilkdownEditorContainer>
     </MilkdownContainer>
   );
