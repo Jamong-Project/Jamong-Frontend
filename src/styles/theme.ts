@@ -9,6 +9,7 @@ export const size = {
 const theme = {
   mq: {
     laptop: `@media only screen and (max-width: ${size.largest})`,
+    tablet: `@media only screen and (max-width: ${size.large})`,
     mobile: `@media only screen and (max-width: ${size.small})`,
   },
   colors: {
@@ -19,11 +20,13 @@ const theme = {
     primaryGray: "#e0e0e0",
     accentColor: "#f4a261",
     waveColor: "#def0ff",
+    divider: "#e0e0e0",
+    transparentBlack: "rgba(0, 0, 0, 0.4)",
   },
-  fontSize: {
+  fontSizes: {
     xxs: "0.5rem",
     xs: "0.75rem",
-    sm: "1rem",
+    sm: "0.875rem",
     base: "1.25rem",
     md: "1.5rem",
     lg: "2rem",

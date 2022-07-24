@@ -5,11 +5,12 @@ const style = css`
   @import url("https://fonts.googleapis.com/css2?family=Kanit&display=swap");
 
   * {
-    font-family: "Kanit", "Noto Sans KR", sans-serif;
+    font-family: /* "Kanit", */ "Noto Sans KR", sans-serif;
   }
 
   body {
     margin: 0;
+    background-color: white;
   }
 `;
 

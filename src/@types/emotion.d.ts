@@ -5,6 +5,7 @@ declare module "@emotion/react" {
     mq: {
       laptop: string;
       mobile: string;
+      tablet: string;
     };
     fontSizes: {
       xxs: string;
@@ -22,6 +23,8 @@ declare module "@emotion/react" {
       primaryGray: string;
       accentColor: string;
       waveColor: string;
+      divider: string;
+      transparentBlack: string;
     };
   }
 }
